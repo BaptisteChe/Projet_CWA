@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
 import { Cereale, CEREALES } from 'src/shared/cereale';
 
 
@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  graines: Cereale[] = CEREALES;
+  showFiller = false;
 
+  graine: Cereale = new Cereale("Orge",30,0.5,"De la merde");
+
+  graines: Cereale[] = CEREALES;
 }

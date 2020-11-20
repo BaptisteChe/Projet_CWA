@@ -15,7 +15,7 @@ export enum Nom{
     Pois = "Pois",
 }
 
-export  class Cereale {
+export class Cereale {
     nom: String;
     masse: number;
     impurete: Impurete;

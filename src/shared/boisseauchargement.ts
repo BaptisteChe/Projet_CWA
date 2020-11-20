@@ -1,12 +1,14 @@
+import { Cereale } from './cereale';
+
 export class BoisseauChargement
 {
   private cereale : Cereale;
 
 //CONSTRUCTEUR
 
-  constructor(/*parametres*/)
+  constructor(cereale : Cereale)
   {
-
+    this.cereale = cereale;
   }
 
 //ACCESSEURS
@@ -16,7 +18,7 @@ export class BoisseauChargement
     return this.cereale;
   }
 
-  setCereale(Cereale cereale)
+  setCereale(cereale : Cereale )
   {
     this.cereale = cereale;
   }

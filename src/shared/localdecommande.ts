@@ -1,13 +1,16 @@
 export class LocalDeCommande
 {
-  private temperatureParCellule : double[50];
-  private ventilationActive : Boolean;
+  private temperatureParCellule : number[];
+  private ventilationActive : boolean;
 
 //CONSTRUCTEUR
 
-  constructor(/*parametres*/)
+  constructor()
   {
-
+    //50 cases dans le tableau de température
+   for(let i = 0; i < 50; i++){
+     this.temperatureParCellule[i] = 0;
+   }
   }
 
 //ACCESSEURS
@@ -17,7 +20,7 @@ export class LocalDeCommande
     return this.temperatureParCellule;
   }
 
-  setTemperatureParCellule(double[] temperatureParCellule)
+  setTemperatureParCellule( temperatureParCellule : number[])
   {
     this.temperatureParCellule = temperatureParCellule;
   }
@@ -27,14 +30,14 @@ export class LocalDeCommande
     return this.ventilationActive;
   }
 
-  setVentilationActive(Boolean ventilationActive)
+  setVentilationActive(ventilationActive : boolean)
   {
     this.ventilationActive = ventilationActive;
   }
 
 //FONCTIONS
 
-  void activerVentilation()
+  activerVentilation()
   {
 
   }

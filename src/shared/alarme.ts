@@ -5,10 +5,10 @@ export enum CausesAlarme{
 }
 
 export class alarme{
-    isActive: Boolean;
-    cause: String;
+    isActive: boolean;
+    cause: string;
 
-    constructor(isActive: Boolean, cause: String){
+    constructor(isActive: boolean, cause: string){
         this.isActive = isActive;
         this.cause = cause;
     }

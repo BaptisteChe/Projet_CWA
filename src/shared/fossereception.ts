@@ -1,12 +1,14 @@
+import { Cereale } from './cereale';
+
 export class FosseReception
 {
   private cereale : Cereale;
 
 //CONSTRUCTEUR
 
-  constructor(/*parametres*/)
+  constructor(cereale : Cereale)
   {
-
+    this.cereale = cereale;
   }
 
 //ACCESSEURS
@@ -16,14 +18,14 @@ export class FosseReception
     return this.cereale;
   }
 
-  setCereale(Cereale cereale)
+  setCereale(cereale : Cereale )
   {
     this.cereale = cereale
   }
 
 //FONCTIONS
 
-  reception(Cereale cereale)
+  reception(cereale : Cereale ) 
   {
 
   }

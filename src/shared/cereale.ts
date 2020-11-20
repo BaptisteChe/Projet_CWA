@@ -1,4 +1,4 @@
-import { Impurete } from './Impurete';
+import { Impurete } from './impurete';
 
 export enum Qualite{
     mediocre = "mediocre",
@@ -16,20 +16,20 @@ export enum Nom{
 }
 
 export class Cereale {
-    nom: String;
+    nom: Nom;
     masse: number;
     impurete: Impurete;
-    tauxHumidité: number;
-    qualite: string;
+    tauxHumidite: number;
+    qualite: Qualite;
     triee: boolean;
     netoyee: boolean;
     separee: boolean;
     traitee: boolean;
 
-    constructor(nom: string, masse: number, tauxHumidité: number, qualite: string, impurete: Impurete, triee: boolean, netoyee: boolean, separee: boolean, traitee: boolean) {
+    constructor(nom: Nom, masse: number, tauxHumidite: number, qualite: Qualite, impurete: Impurete, triee: boolean, netoyee: boolean, separee: boolean, traitee: boolean) {
         this.nom = nom;
         this.masse = masse;
-        this.tauxHumidité = tauxHumidité;
+        this.tauxHumidite = tauxHumidite;
         this.qualite = qualite;
         this.impurete = impurete;
         this.triee = triee;

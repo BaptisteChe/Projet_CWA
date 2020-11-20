@@ -1,12 +1,12 @@
 export class Sonde
 {
-  private temperature : double;
+  private temperature : number;
 
 //CONSTRUCTEUR
 
-  constructor(/*parametres*/)
+  constructor(temperature : number)
   {
-
+    this.temperature = temperature;
   }
 
 //ACCESSEURS
@@ -16,7 +16,7 @@ export class Sonde
     return this.temperature;
   }
 
-  setTemperature(int temperature)
+  setTemperature(temperature : number)
   {
     this.temperature = temperature;
   }

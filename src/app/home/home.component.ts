@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  bar1=10;
+  bar2=50;
+  bar3=90;
+
   showFiller = false;
 
   impureter: Impurete = new Impurete(false, false, false, false);

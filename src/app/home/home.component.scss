@@ -1,0 +1,20 @@
+.mat-progress-bar {
+    height: 10px;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+    background-color: #c795dd;
+}
+
+::ng-deep .mat-progress-bar.mat-accent .mat-progress-bar-fill::after {
+    background-color: #147747;
+}
+
+
+::ng-deep .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
+    background-color: #83ddb1;
+}
+
+::ng-deep .mat-progress-bar.mat-warn .mat-progress-bar-fill::after {
+    background-color: #f52516;
+}

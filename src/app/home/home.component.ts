@@ -20,10 +20,15 @@ import {TremieVrac} from 'src/shared/tremievrac';
 })
 
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  AffiCamion:boolean=false;
+  constructor() {
+   }
 
   ngOnInit(): void {
+  }
+
+  AffC(){
+    this.AffiCamion=true;
   }
 
   bar1=10;

@@ -27,6 +27,6 @@ export class BoisseauChargement
 
   expedition()
   {
-
+    alert("Cereale de type : " + this.cereale.nom + "<br> poid : " + this.cereale.masse + "<br> taux d'humidite : " + this.cereale.tauxHumidite + "<br> qualite : " + this.cereale.qualite + "<br> details de l expedition : " + this.cereale.detailsExpedition());
   }
 }

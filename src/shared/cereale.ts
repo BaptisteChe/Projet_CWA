@@ -22,18 +22,18 @@ export class Cereale {
     tauxHumidite: number;
     qualite: Qualite;
     triee: boolean;
-    netoyee: boolean;
+    nettoyee: boolean;
     separee: boolean;
     traitee: boolean;
 
-    constructor(nom: Nom, masse: number, tauxHumidite: number, qualite: Qualite, impurete: Impurete, triee: boolean, netoyee: boolean, separee: boolean, traitee: boolean) {
+    constructor(nom: Nom, masse: number, tauxHumidite: number, qualite: Qualite, impurete: Impurete, triee: boolean, nettoyee: boolean, separee: boolean, traitee: boolean) {
         this.nom = nom;
         this.masse = masse;
         this.tauxHumidite = tauxHumidite;
         this.qualite = qualite;
         this.impurete = impurete;
         this.triee = triee;
-        this.netoyee = netoyee;
+        this.nettoyee = nettoyee;
         this.separee = separee;
         this.traitee = traitee;
     }

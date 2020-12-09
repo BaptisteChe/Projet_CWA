@@ -39,11 +39,11 @@ export class NettoyeurSeparateur
 
   nettoyer(cereale :Cereale )
   {
-
+    cereale.nettoyee = true;
   }
 
   separer(cereale : Cereale )
   {
-
+      cereale.separee = true;
   }
 }

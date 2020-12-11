@@ -103,6 +103,7 @@
                     <mat-progress-bar mode="determinate" [value]="bar3" color="warn"></mat-progress-bar>
                 </p>
             </div>
+            <!--
             <div>
                 <mat-form-field appearance="fill" style="padding-right: 20px; padding-left: 20px;">
                     <mat-label>progress bar 1</mat-label>
@@ -117,58 +118,52 @@
                     <input matInput type="number" [(ngModel)]="bar3" value=90 placeholder="Ex. 12">
                 </mat-form-field>
             </div>
+          -->
         </mat-tab>
-        <mat-tab label="Boisseau">
-            <div fxLayout="row" fxLayoutAlign="space-around stretch">
+         <mat-tab label="Boisseau">
+            <div fxLayout="row" fxLayoutAlign="space-around stretch">             
                 <div>
-                    <mat-card *ngIf="AffiCamion" style="height:700px; width:600px;">
-                        <mat-card-header>
-                          <div mat-card-avatar class="example-header-image"></div>
-                          <mat-card-title>Camion</mat-card-title>
-                          <mat-card-subtitle>C'est pas sorcier</mat-card-subtitle>
-                        </mat-card-header>
-                        <img mat-card-image src="../../assets/camion.gif" alt="camion">
-                        <mat-card-content>
-                          <p>
-                            Il s'agit d'un camion transportant du xanogene et du nitroXL à destination de l'appartement de Jérémy
-                          </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                        </mat-card-actions>
-                      </mat-card>
-                </div>
-                <div fxLayout="column" fxLayoutAlign="stretch" >
-                    <div>
-                        <button mat-flat-button color="accent" style="height:100px; width:300px;" (click)="AffC()">Camion</button>
-                    </div>
-                    <div>
-                        <button mat-flat-button color="accent" style="height:100px; width:300px;" (click)="AffC()">Camion</button>
-                    </div> 
-                    <div>
-                        <button mat-flat-button color="accent" style="height:100px; width:300px;" (click)="AffC()">Camion</button>
-                    </div>  
-                </div>
-                <div>
-                    <button mat-flat-button color="accent" style="height:300px; width:300px;">Boisseau</button>
-                </div>
-                <div>
-                    <mat-card style="height:700px; width:600px;">
+                    <mat-card style="height:700px; width:600px;overflow-y: scroll;">
                         <mat-card-header>
                           <div mat-card-avatar class="example-header-image"></div>
                           <mat-card-title>Boisseau</mat-card-title>
                         </mat-card-header>
-                        <img mat-card-image src="../../assets/boisseau.jpg" alt="camion">
+                        <!--<img mat-card-image src="../../assets/boisseau.jpg" alt="camion">-->
                         <mat-card-content>
                           <p>
-                            information sur le boisseau
+                            Type de céréale :
+                            Poids :
+                            Qualité : 
+                            En attente de chargement : 
                           </p>
                         </mat-card-content>
                         <mat-card-actions>
                         </mat-card-actions>
                       </mat-card>
                 </div>
+
+                <div>
+                  <mat-card style="height:700px; width:600px;overflow-y: scroll;">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>Historique</mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <p>
+                          Type de céréale :
+                          Poids :
+                          Qualité : 
+                          Numéro de commande :
+                          Lieu de destination :
+                        </p>
+                      </mat-card-content>
+                      <mat-card-actions>
+                      </mat-card-actions>
+                    </mat-card>
+              </div>
             </div>     
         </mat-tab>
+        <!--
         <mat-tab label="TEST !">
             <div>
                 <p>{{ impureter | json }}</p>
@@ -176,5 +171,6 @@
                 <p>{{ alarme | json }}</p>
             </div>
         </mat-tab>
+        -->
     </mat-tab-group>
 </body>

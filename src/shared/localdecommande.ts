@@ -39,6 +39,6 @@ export class LocalDeCommande
 
   activerVentilation()
   {
-
+    this.setVentilationActive(true);
   }
 }

@@ -11,28 +11,16 @@ export class FosseReception
     this.cereale = cereale;
   }
 
-//ACCESSEURS
-
-  getCereale()
-  {
-    return this.cereale;
-  }
-
-  setCereale(cereale : Cereale )
-  {
-    this.cereale = cereale
-  }
-
 //FONCTIONS
 
   reception(cereale : Cereale ) 
   {
-
+    this.cereale = cereale;
   }
 
   expedition()
   {
-
+    return this.cereale;
   }
 
 }

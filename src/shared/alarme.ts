@@ -2,13 +2,14 @@ export enum CausesAlarme{
     bourrageTremieVrac = "bourrageTremieVrac",
     perteDeGrain = "perteDeGrain",
     incendie = "incendie",
+    ok = "ok"
 }
 
-export class alarme{
+export class Alarme{
     isActive: boolean;
-    cause: string;
+    cause: CausesAlarme;
 
-    constructor(isActive: boolean, cause: string){
+    constructor(isActive: boolean, cause: CausesAlarme){
         this.isActive = isActive;
         this.cause = cause;
     }

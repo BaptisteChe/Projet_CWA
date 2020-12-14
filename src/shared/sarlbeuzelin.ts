@@ -1,5 +1,5 @@
-import {Cereale, Qualite, Nom} from 'src/shared/cereale';
-import {CausesAlarme, alarme} from 'src/shared/alarme';
+import {Cereale} from 'src/shared/cereale';
+import {Alarme} from 'src/shared/alarme';
 import {BoisseauChargement} from 'src/shared/boisseauchargement';
 import {FosseReception} from 'src/shared/fossereception';
 import {LocalDeCommande} from 'src/shared/localdecommande';
@@ -8,7 +8,7 @@ import {Silo} from 'src/shared/silo';
 import {TremieVrac} from 'src/shared/tremievrac';
 
 export class SARLBeuzelin{
-  private alarme : alarme;
+  private alarme : Alarme;
   private silo : Silo;
   private tremievrac : TremieVrac;
   private nettoyeurSeparateur : NettoyeurSeparateur;
@@ -20,7 +20,7 @@ export class SARLBeuzelin{
 
 //CONSTRUCTEUR
 
-  constructor(alarme : alarme, silo : Silo, tremie : TremieVrac, net : NettoyeurSeparateur, bois : BoisseauChargement[], locdc : LocalDeCommande, cereale : Cereale[], fosse : FosseReception[], lieux : string[]){
+  constructor(alarme : Alarme, silo : Silo, tremie : TremieVrac, net : NettoyeurSeparateur, bois : BoisseauChargement[], locdc : LocalDeCommande, cereale : Cereale[], fosse : FosseReception[], lieux : string[]){
     this.alarme = alarme;
     this.silo = silo;
     this.tremievrac = tremie;

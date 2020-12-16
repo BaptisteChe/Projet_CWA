@@ -1,4 +1,6 @@
 import { Impurete } from './impurete';
+import { NettoyeurSeparateur } from './nettoyeurseparateur';
+import { TremieVrac } from './tremievrac';
 
 export enum Qualite{
     mediocre = "mediocre",
@@ -15,6 +17,14 @@ export enum Nom{
     Pois = "Pois",
 }
 
+export enum Lieu{
+    TremieVrac = "TremieVrac",
+    BoisseauChargement = "BoisseauChargement",
+    FosseReception = "FosseReception",
+    NettoyeurSeparateur = "NettoyeurSeparateur",
+    Cellule = "Cellule",
+}
+
 export class Cereale {
     nom: Nom;
     masse: number;
@@ -25,6 +35,7 @@ export class Cereale {
     nettoyee: boolean;
     separee: boolean;
     traitee: boolean;
+    historiqueLieu: Lieu[];
 
     constructor(nom: Nom, masse: number, tauxHumidite: number, qualite: Qualite, impurete: Impurete, triee: boolean, nettoyee: boolean, separee: boolean, traitee: boolean) {
         this.nom = nom;
@@ -38,20 +49,52 @@ export class Cereale {
         this.traitee = traitee;
     }
 
-    acheminement(lieu: string){
-
+    acheminement(lieu: String){
+        switch(lieu){
+            case "TremieVrac":{
+                this.triee = true;
+                this.historiqueLieu.push(Lieu.TremieVrac);
+                break;
+            }
+            case "NettoyeurSeparateur":{
+                this.nettoyee = true;
+                this.separee = true;
+                this.historiqueLieu.push(Lieu.NettoyeurSeparateur);
+                break;
+            }
+            case "BoisseauChargement":{
+                this.historiqueLieu.push(Lieu.BoisseauChargement);
+                break;
+            }
+            case "FosseReception":{
+                this.historiqueLieu.push(Lieu.FosseReception);
+                break;
+            }
+            case "Cellule":{
+                this.historiqueLieu.push(Lieu.Cellule);
+                break;
+            }
+        } 
     }
 
-    historiqueOperationEffectuees(){
-
+    historiqueOperationEffectuees():string{
+        let str: string;
+        if(this.triee == true) str += "Céréale: triée\n";
+        if(this.nettoyee == true) str += "Céréale: nétoyee\n";
+        if(this.separee == true) str += "Céréale: separee\n";
+        return str;
     }
 
-    historiqueLieuxStockage(){
-
+    historiqueLieuxStockage():string{
+        let str: string = this.historiqueLieu.toString();
+        return str;
     }
 
-    detailsExpedition(){
-
+    detailsExpedition():string{
+        let str: string = `Nous expédions du ${this.nom}\n
+            Ces céréales pesent ${this.masse}\n
+            Elles ont une qualitée ${this.qualite}`;
+        return str;
     }
 }
 

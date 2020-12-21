@@ -6,6 +6,7 @@ import {LocalDeCommande} from 'src/shared/localdecommande';
 import {NettoyeurSeparateur} from 'src/shared/nettoyeurseparateur';
 import {Silo} from 'src/shared/silo';
 import {TremieVrac} from 'src/shared/tremievrac';
+import { Camion } from './camion';
 
 export class SARLBeuzelin{
   private alarme : Alarme;
@@ -17,19 +18,14 @@ export class SARLBeuzelin{
   private cereale : Cereale[];
   private fossesReception : FosseReception[];
   private lieuxExpedition : string[];
+  private camion : Camion;
 
 //CONSTRUCTEUR
 
-  constructor(alarme : Alarme, silo : Silo, tremie : TremieVrac, net : NettoyeurSeparateur, bois : BoisseauChargement[], locdc : LocalDeCommande, cereale : Cereale[], fosse : FosseReception[], lieux : string[]){
-    this.alarme = alarme;
-    this.silo = silo;
-    this.tremievrac = tremie;
-    this.nettoyeurSeparateur = net;
-    this.boisseauxChargement = bois;
-    this.localDeCommande = locdc;
-    this.cereale = cereale;
-    this.fossesReception = fosse;
-    this.lieuxExpedition = lieux;
+  constructor(){
+    this.alarme = null;
+    this.silo = new Silo(1500);
+    this.tremievrac = new TremieVrac();
   }
 
 //FONCTIONS

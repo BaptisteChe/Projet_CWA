@@ -5,6 +5,7 @@ export class Cellule
   private numeroCellule : number;
   private sondes : Sonde[];
   private volume : number;
+  private cereale : Cereale;
 
 //CONSTRUCTEUR
 
@@ -12,7 +13,7 @@ export class Cellule
   {
     this.numeroCellule = numero;
     for (let i = 0; i < 5; i++){
-      this.sondes[i] = new Sonde(0);
+      this.sondes[i] = new Sonde(null);
     }
     this.volume = volume;
   }
@@ -47,5 +48,10 @@ export class Cellule
   setVolume(volume : number)
   {
     this.volume = volume;
+  }
+
+  insecticide(){
+    this.cereale.impurete.presenceInsectes = false;
+    this.cereale.histo += "Céréale traitée par insecticides";
   }
 }

@@ -1,60 +1,51 @@
-import { Cereale } from './cereale';
+import { exception } from 'console';
+import { Cereale, Element_Indesirable } from './cereale';
 
 
 export class TremieVrac
 {
   private bourrage : boolean;
-  private cerealesATraiter : Cereale[];
+  private poids : number;
+  private cerealesATraiter : Cereale;
 
 //CONSTRUCTEUR
 
-  constructor(cereale : Cereale[])
+  constructor()
   {
     this.bourrage = false;
-    this.cerealesATraiter = cereale;
-  }
-
-//ACCESSEURS
-
-  getBourrage()
-  {
-    return this.bourrage;
-  }
-
-  setBourrage(bourrage : boolean)
-  {
-    this.bourrage = bourrage;
-  }
-
-  getCerealesATraiter()
-  {
-    return this.cerealesATraiter;
-  }
-
-  setCeralesATraiter(cerealesATraiter : Cereale[] )
-  {
-    this.cerealesATraiter = cerealesATraiter;
+    this.cerealesATraiter = null;
+    this.poids = 50;
   }
 
 //FONCTIONS
 
-  pesee(cereale : Cereale)
-  {
-
+  isVide(){
+    if(this.cerealesATraiter == null)
+      return true;
+    else
+      return false;
   }
 
-  echantillonnage(cereale : Cereale )
+  triage()
   {
-
-  }
-
-  triage(cereale : Cereale )
-  {
-
+    if(!this.bourrage && !this.isVide){
+      this.cerealesATraiter.element_ind = Element_Indesirable.Clean;
+      this.cerealesATraiter.triee = true;
+    }
   }
 
   bourrageAlarme()
   {
+    if(this.cerealesATraiter.masse > this.poids){
+      this.bourrage = true;
+      exception("Alarme Activée dans la Tremie Vrac !");
+    }
+  }
 
+  viderTremie(){
+    this.cerealesATraiter.histo += "Céréale Traitée par la Trémie-Vrac";
+    let c = this.cerealesATraiter;
+    this.cerealesATraiter = null;
+    return c;
   }
 }

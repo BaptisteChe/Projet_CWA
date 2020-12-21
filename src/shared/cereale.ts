@@ -7,7 +7,7 @@ export enum Qualite{
     passable = "passable",
     bonne = "bonne",
     excellente = "excellente",
-    premium = "premium",        
+    premium = "premium",
 }
 
 export enum Nom{
@@ -17,26 +17,36 @@ export enum Nom{
     Pois = "Pois",
 }
 
-export enum Lieu{
-    TremieVrac = "TremieVrac",
-    BoisseauChargement = "BoisseauChargement",
-    FosseReception = "FosseReception",
-    NettoyeurSeparateur = "NettoyeurSeparateur",
-    Cellule = "Cellule",
+export enum Expedition{
+  seine_Maritime = "silos portuaires de Seine Maritime",
+  meunerie = "meuneries",
+}
+
+export enum Element_Indesirable{
+    Caillou = "Caillou",
+    Bois = "Bois",
+    Terre = "Terre",
+    Clean = "Clean",
 }
 
 export class Cereale {
     nom: Nom;
     masse: number;
     impurete: Impurete;
+    element_ind: Element_Indesirable;
     tauxHumidite: number;
     qualite: Qualite;
     triee: boolean;
     nettoyee: boolean;
     separee: boolean;
     traitee: boolean;
-    historiqueLieu: Lieu[];
+    expedition : Expedition;
+    histo : string = "";
 
+    constructor(nom : Nom){
+        this.nom = nom;
+    }
+/*
     constructor(nom: Nom, masse: number, tauxHumidite: number, qualite: Qualite, impurete: Impurete, triee: boolean, nettoyee: boolean, separee: boolean, traitee: boolean) {
         this.nom = nom;
         this.masse = masse;
@@ -48,54 +58,7 @@ export class Cereale {
         this.separee = separee;
         this.traitee = traitee;
     }
-
-    acheminement(lieu: String){
-        switch(lieu){
-            case "TremieVrac":{
-                this.triee = true;
-                this.historiqueLieu.push(Lieu.TremieVrac);
-                break;
-            }
-            case "NettoyeurSeparateur":{
-                this.nettoyee = true;
-                this.separee = true;
-                this.historiqueLieu.push(Lieu.NettoyeurSeparateur);
-                break;
-            }
-            case "BoisseauChargement":{
-                this.historiqueLieu.push(Lieu.BoisseauChargement);
-                break;
-            }
-            case "FosseReception":{
-                this.historiqueLieu.push(Lieu.FosseReception);
-                break;
-            }
-            case "Cellule":{
-                this.historiqueLieu.push(Lieu.Cellule);
-                break;
-            }
-        } 
-    }
-
-    historiqueOperationEffectuees():string{
-        let str: string;
-        if(this.triee == true) str += "Céréale: triée\n";
-        if(this.nettoyee == true) str += "Céréale: nétoyee\n";
-        if(this.separee == true) str += "Céréale: separee\n";
-        return str;
-    }
-
-    historiqueLieuxStockage():string{
-        let str: string = this.historiqueLieu.toString();
-        return str;
-    }
-
-    detailsExpedition():string{
-        let str: string = `Nous expédions du ${this.nom}\n
-            Ces céréales pesent ${this.masse}\n
-            Elles ont une qualitée ${this.qualite}`;
-        return str;
-    }
+*/
 }
 
 

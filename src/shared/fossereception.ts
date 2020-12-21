@@ -1,3 +1,5 @@
+import { CheckboxControlValueAccessor } from '@angular/forms';
+import { exception } from 'console';
 import { Cereale } from './cereale';
 
 export class FosseReception
@@ -6,21 +8,37 @@ export class FosseReception
 
 //CONSTRUCTEUR
 
-  constructor(cereale : Cereale)
+  constructor()
   {
-    this.cereale = cereale;
+    this.cereale = null;
   }
 
 //FONCTIONS
 
+  //Test si la fosse est vide ou non
+  isVide(){
+    if(this.cereale == null)
+      return true;
+    else
+      return false;
+  }
+
   reception(cereale : Cereale ) 
   {
-    this.cereale = cereale;
+    if(this.isVide()){
+      this.cereale = cereale;
+      this.cereale.histo += "Dans la Fosse";
+    }else{
+      exception("La Fosse a déjà une céréale !");
+    }
   }
 
   expedition()
   {
-    return this.cereale;
+    this.cereale.histo += "Check Fosse";
+    let c : Cereale = this.cereale;
+    this.cereale = null;
+    return c;
   }
 
 }

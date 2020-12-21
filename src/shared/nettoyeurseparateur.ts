@@ -3,17 +3,26 @@ import { Cereale } from './cereale';
 export class NettoyeurSeparateur
 {
   private bourrage :  boolean;
-  private cerealesATraiter : Cereale[];
+  private poids : number;
+  private cerealesATraiter : Cereale;
 
 //CONSTRUCTEUR
 
-  constructor(cereale : Cereale[])
+  constructor()
   {
     this.bourrage = false;
-    this.cerealesATraiter = cereale;
+    this.cerealesATraiter = null;
+    this.poids = 20;
   }
 
 //ACCESSEURS
+
+  isVide(){
+    if(this.cerealesATraiter == null)
+      return true;
+    else
+      return false;
+  }
 
   getBourrage()
   {
@@ -37,13 +46,28 @@ export class NettoyeurSeparateur
 
 //FONCTIONS
 
-  nettoyer(cereale :Cereale )
+  nettoyer()
   {
-    cereale.nettoyee = true;
+    if(!this.bourrage && !this.isVide()){
+      this.cerealesATraiter.nettoyee = true;
+      this.cerealesATraiter.impurete.grosElements = false;
+      this.cerealesATraiter.impurete.poussieresInflammables = false;
+      this.cerealesATraiter.impurete.presenceElementsLegers = false;
+    }
   }
 
-  separer(cereale : Cereale )
+  bourrageAlarme()
   {
-      cereale.separee = true;
+    if(this.cerealesATraiter.masse > this.poids){
+      this.bourrage = true;
+      exception("Alarme Activée dans le nettoyeur !");
+    }
+  }
+
+  viderNettoyeur(){
+    this.cerealesATraiter.histo += "Céréale Traitée par le Nettoyeur - Separateur";
+    let c = this.cerealesATraiter;
+    this.cerealesATraiter = null;
+    return c;
   }
 }

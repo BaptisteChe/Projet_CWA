@@ -40,7 +40,7 @@ export class BoisseauChargement
       let c = this.cereale;
       this.cereale = null;
     }else
-      exception("Boisseau plein");
+      console.error("Boisseau plein");
   }
 
   genererLieuExpedition():Expedition{

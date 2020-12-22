@@ -1,3 +1,4 @@
+import { Cereale } from './cereale';
 import { Sonde } from './sonde';
 
 export class Cellule

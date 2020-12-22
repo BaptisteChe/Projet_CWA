@@ -1,5 +1,4 @@
 import { CheckboxControlValueAccessor } from '@angular/forms';
-import { exception } from 'console';
 import { Cereale } from './cereale';
 
 export class FosseReception
@@ -29,7 +28,7 @@ export class FosseReception
       this.cereale = cereale;
       this.cereale.histo += "Dans la Fosse";
     }else{
-      exception("La Fosse a déjà une céréale !");
+      console.error("La Fosse a déjà une céréale !")
     }
   }
 

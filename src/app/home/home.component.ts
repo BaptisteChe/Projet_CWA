@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   showFiller = false;
 
   impureter: Impurete = new Impurete(false, false, false, false);
-  graine: Cereale = new Cereale(Nom.Orge,30,0.5,Qualite.bonne,this.impureter,false,false,false,false);
+  graine: Cereale = new Cereale(Nom.Orge);
   alarme: Alarme = new Alarme(false,CausesAlarme.ok);
 
   //graine: Cereale = new Cereale("Orge",30,0.5,"De la merde");

@@ -39,7 +39,7 @@ export class NettoyeurSeparateur
     return this.cerealesATraiter;
   }
 
-  setCerealesATraiter(cerealesATraiter : Cereale[] )
+  setCerealesATraiter(cerealesATraiter : Cereale )
   {
     this.cerealesATraiter = cerealesATraiter;
   }
@@ -60,7 +60,7 @@ export class NettoyeurSeparateur
   {
     if(this.cerealesATraiter.masse > this.poids){
       this.bourrage = true;
-      exception("Alarme Activée dans le nettoyeur !");
+      console.error("Alarme Activée dans le nettoyeur !")
     }
   }
 

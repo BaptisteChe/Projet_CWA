@@ -1,4 +1,3 @@
-import { exception } from 'console';
 import { Cereale, Element_Indesirable } from './cereale';
 
 
@@ -38,7 +37,7 @@ export class TremieVrac
   {
     if(this.cerealesATraiter.masse > this.poids){
       this.bourrage = true;
-      exception("Alarme Activée dans la Tremie Vrac !");
+      console.error("Alarme Activée dans la Tremie Vrac !");
     }
   }
 

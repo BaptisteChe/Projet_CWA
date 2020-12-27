@@ -19,13 +19,22 @@ export class SARLBeuzelin{
   private fossesReception : FosseReception[];
   private lieuxExpedition : string[];
   private camion : Camion;
+  private static instance : SARLBeuzelin;
 
 //CONSTRUCTEUR
 
-  constructor(){
+  private constructor(){
     this.alarme = null;
     this.silo = new Silo(1500);
     this.tremievrac = new TremieVrac();
+  }
+
+  public static getInstance():SARLBeuzelin{
+    if(!SARLBeuzelin.instance)
+    {
+      SARLBeuzelin.instance = new SARLBeuzelin();
+    }
+    return SARLBeuzelin.instance;
   }
 
 //FONCTIONS

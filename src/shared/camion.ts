@@ -1,5 +1,6 @@
 import { Cereale } from './cereale';
-import { Nom } from './enumeration';
+import { Nom, Qualite, } from './enumeration';
+import { Impurete } from './impurete';
 
 export class Camion
 {
@@ -10,10 +11,9 @@ export class Camion
     }
 
     generationCereale(){
-        let nom: Nom;
-        let alea: Number;
-        alea = this.getRandomInt(0, 3);
-        this.cereale = new Cereale(nom);
+        let alea;
+        alea = this.getRandomInt(0, 4);
+        this.cereale = new Cereale(Nom[alea]);
     }
 
     getRandomInt(min, max):Number {
@@ -23,11 +23,23 @@ export class Camion
     }
 
     pesee(){
-        //Méthode de la génération du poids de la Céréale
+        let alea;
+        alea = this.getRandomInt(5, 25);
+        this.cereale.masse = alea;
     }
 
     echantillonnage(){
         //Méthode de la génération de la Qualité, du taux d'humidité et des impuretés de la Céréale
+        let alea;
+        alea = this.getRandomInt(5, 50);
+        this.cereale.tauxHumidite = alea;
+        alea = this.getRandomInt(0, 5);
+        this.cereale.qualite = Qualite[alea];
+        let ge = Boolean(Math.round(Math.random()));
+        let pi = Boolean(Math.round(Math.random()));
+        let pel = Boolean(Math.round(Math.random()));
+        let pin = Boolean(Math.round(Math.random()));
+        this.cereale.impurete = new Impurete(ge,pi,pel,pin);
     }
 
     vidercamion(){

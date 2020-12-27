@@ -1,33 +1,8 @@
 import { Impurete } from './impurete';
 import { NettoyeurSeparateur } from './nettoyeurseparateur';
 import { TremieVrac } from './tremievrac';
+import { Qualite, Nom, Expedition, Element_Indesirable } from './enumeration';
 
-export enum Qualite{
-    mediocre = "mediocre",
-    passable = "passable",
-    bonne = "bonne",
-    excellente = "excellente",
-    premium = "premium",
-}
-
-export enum Nom{
-    Orge = "Orge",
-    Ble = "Ble",
-    Colza = "Colza",
-    Pois = "Pois",
-}
-
-export enum Expedition{
-  seine_Maritime = "silos portuaires de Seine Maritime",
-  meunerie = "meuneries",
-}
-
-export enum Element_Indesirable{
-    Caillou = "Caillou",
-    Bois = "Bois",
-    Terre = "Terre",
-    Clean = "Clean",
-}
 
 export class Cereale {
     nom: Nom;

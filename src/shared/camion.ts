@@ -1,4 +1,5 @@
-import { Cereale, Nom, Qualite } from './cereale';
+import { Cereale } from './cereale';
+import { Nom } from './enumeration';
 
 export class Camion
 {
@@ -9,7 +10,16 @@ export class Camion
     }
 
     generationCereale(){
-        //Méthode de génération du nom de la Céréale
+        let nom: Nom;
+        let alea: Number;
+        alea = this.getRandomInt(0, 3);
+        this.cereale = new Cereale(nom);
+    }
+
+    getRandomInt(min, max):Number {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
     }
 
     pesee(){

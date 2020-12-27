@@ -1,9 +1,4 @@
-export enum CausesAlarme{
-    bourrageTremieVrac = "bourrageTremieVrac",
-    perteDeGrain = "perteDeGrain",
-    incendie = "incendie",
-    ok = "ok"
-}
+import { CausesAlarme } from './enumeration';
 
 export class Alarme{
     isActive: boolean;

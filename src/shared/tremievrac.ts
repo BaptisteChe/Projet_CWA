@@ -1,6 +1,6 @@
 import { Alarme } from './alarme';
 import { Cereale } from './cereale';
-import { Element_Indesirable } from './enumeration';
+import { CausesAlarme, Element_Indesirable } from './enumeration';
 
 
 export class TremieVrac
@@ -20,32 +20,45 @@ export class TremieVrac
     this.alarme = new Alarme();
   }
 
+//Accesseur
+  getAlarme()
+  {
+    return this.alarme;
+  }
+
 //FONCTIONS
 
-  isVide(){
+  isVide()
+  {
     if(this.cerealesATraiter == null)
       return true;
-    else
+    else{
+      console.error("Tremie vrac non vide");
       return false;
+    }
   }
 
   triage()
   {
-    if(!this.bourrage && !this.isVide){
+    if(!this.bourrageAlarme() && !this.isVide){
       this.cerealesATraiter.element_ind = Element_Indesirable.Clean;
       this.cerealesATraiter.triee = true;
     }
   }
 
-  bourrageAlarme()
+  bourrageAlarme() : boolean
   {
     if(this.cerealesATraiter.masse > this.poids){
       this.bourrage = true;
+      this.alarme.setIsActive(true);
+      this.alarme.setCause(CausesAlarme.bourrageTremieVrac);
       console.error("Alarme Activée dans la Tremie Vrac !");
     }
+    return this.bourrage;
   }
 
-  viderTremie(){
+  viderTremie() : Cereale
+  {
     this.cerealesATraiter.histo += "Céréale Traitée par la Trémie-Vrac";
     let c = this.cerealesATraiter;
     this.cerealesATraiter = null;

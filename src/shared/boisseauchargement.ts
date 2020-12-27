@@ -25,11 +25,14 @@ export class BoisseauChargement
     this.cereale = cereale;
   }
 
-  isVide():boolean{
+  isVide()
+  {
     if(this.cereale == null)
       return true;
-    else
+    else{
+      console.error("Boisseau de chargement non vide")
       return false;
+    }
   }
 
 //FONCTIONS
@@ -45,7 +48,8 @@ export class BoisseauChargement
       console.error("Boisseau plein");
   }
 
-  genererLieuExpedition(): Expedition{
+  genererLieuExpedition() : Expedition
+  {
     let nbr = Math.round(Math.random());
     if(nbr == 0){
       this.cereale.expedition = Expedition.seine_Maritime;

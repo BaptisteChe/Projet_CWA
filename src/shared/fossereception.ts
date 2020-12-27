@@ -14,7 +14,8 @@ export class FosseReception
 //FONCTIONS
 
   //Test si la fosse est vide ou non
-  isVide(){
+  isVide()
+  {
     if(this.cereale == null)
       return true;
     else
@@ -31,7 +32,7 @@ export class FosseReception
     }
   }
 
-  expedition()
+  expedition() : Cereale
   {
     this.cereale.histo += "Check Fosse";
     let c : Cereale = this.cereale;

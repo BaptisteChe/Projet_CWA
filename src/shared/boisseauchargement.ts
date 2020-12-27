@@ -1,4 +1,6 @@
-import { Cereale, Expedition } from './cereale';
+import { Cereale } from './cereale';
+import { Expedition } from './enumeration';
+
 
 export class BoisseauChargement
 {
@@ -43,7 +45,7 @@ export class BoisseauChargement
       console.error("Boisseau plein");
   }
 
-  genererLieuExpedition():Expedition{
+  genererLieuExpedition(): Expedition{
     let nbr = Math.round(Math.random());
     if(nbr == 0){
       this.cereale.expedition = Expedition.seine_Maritime;

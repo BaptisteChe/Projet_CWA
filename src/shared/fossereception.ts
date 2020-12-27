@@ -1,4 +1,3 @@
-import { CheckboxControlValueAccessor } from '@angular/forms';
 import { Cereale } from './cereale';
 
 export class FosseReception

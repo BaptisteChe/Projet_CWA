@@ -1,15 +1,13 @@
-import {Cereale} from 'src/shared/cereale';
-import {Alarme} from 'src/shared/alarme';
-import {BoisseauChargement} from 'src/shared/boisseauchargement';
-import {FosseReception} from 'src/shared/fossereception';
-import {LocalDeCommande} from 'src/shared/localdecommande';
-import {NettoyeurSeparateur} from 'src/shared/nettoyeurseparateur';
-import {Silo} from 'src/shared/silo';
-import {TremieVrac} from 'src/shared/tremievrac';
+import { Cereale } from 'src/shared/cereale';
+import { BoisseauChargement } from 'src/shared/boisseauchargement';
+import { FosseReception } from 'src/shared/fossereception';
+import { LocalDeCommande } from 'src/shared/localdecommande';
+import { NettoyeurSeparateur } from 'src/shared/nettoyeurseparateur';
+import { Silo } from 'src/shared/silo';
+import { TremieVrac } from 'src/shared/tremievrac';
 import { Camion } from './camion';
 
 export class SARLBeuzelin{
-  private alarme : Alarme;
   private silo : Silo;
   private tremievrac : TremieVrac;
   private nettoyeurSeparateur : NettoyeurSeparateur;
@@ -18,15 +16,17 @@ export class SARLBeuzelin{
   private cereale : Cereale[];
   private fossesReception : FosseReception[];
   private lieuxExpedition : string[];
-  private camion : Camion;
+  private camion : Camion[];
   private static instance : SARLBeuzelin;
 
 //CONSTRUCTEUR
 
   private constructor(){
-    this.alarme = null;
-    this.silo = new Silo(1500);
+    this.InitCamion();
+    this.InitFosseReception();
     this.tremievrac = new TremieVrac();
+    this.nettoyeurSeparateur = new NettoyeurSeparateur();
+
   }
 
   public static getInstance():SARLBeuzelin{
@@ -38,12 +38,21 @@ export class SARLBeuzelin{
   }
 
 //FONCTIONS
+  InitCamion(){
+    for(let i = 0; i < 2; i++)
+      this.camion[i] = new Camion();
+  }
 
-  traitement(cereale : Cereale){
+  InitFosseReception(){
+    for(let i = 0; i < 2; i++)
+      this.fossesReception[i] = new FosseReception();
+  }
+
+  traitement(){
 
   }
 
-  nettoyage(cereale : Cereale){
+  nettoyage(){
 
   }
 
@@ -51,7 +60,8 @@ export class SARLBeuzelin{
 
   }
 
-  injectionProduitInsecticide(cereale : Cereale){
+  injectionProduitInsecticide(){
 
   }
 }
+

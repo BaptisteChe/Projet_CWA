@@ -1,4 +1,6 @@
-import { Cereale, Element_Indesirable } from './cereale';
+import { Alarme } from './alarme';
+import { Cereale } from './cereale';
+import { Element_Indesirable } from './enumeration';
 
 
 export class TremieVrac
@@ -6,6 +8,7 @@ export class TremieVrac
   private bourrage : boolean;
   private poids : number;
   private cerealesATraiter : Cereale;
+  private alarme : Alarme;
 
 //CONSTRUCTEUR
 
@@ -14,6 +17,7 @@ export class TremieVrac
     this.bourrage = false;
     this.cerealesATraiter = null;
     this.poids = 50;
+    this.alarme = new Alarme();
   }
 
 //FONCTIONS

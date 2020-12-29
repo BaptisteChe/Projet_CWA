@@ -1,7 +1,9 @@
+import { SARLBeuzelin } from "./sarlbeuzelin";
+
 export class LocalDeCommande
 {
   private temperatureParCellule : number[];
-  private ventilationActive : boolean;
+  private manager: SARLBeuzelin;
 
 //CONSTRUCTEUR
 
@@ -25,22 +27,8 @@ export class LocalDeCommande
     this.temperatureParCellule = temperatureParCellule;
   }
 
-  getVentilationActive()
-  {
-    return this.ventilationActive;
-  }
-
-  setVentilationActive(ventilationActive : boolean)
-  {
-    this.ventilationActive = ventilationActive;
-  }
 
 //FONCTIONS
-
-  activerVentilation()
-  {
-    this.setVentilationActive(true);
-  }
 
   checkTemperature()
   {
@@ -49,6 +37,8 @@ export class LocalDeCommande
       //si pas bon -> setventilation true
       //si bon --> si active deviens false sinon rien
     //return un boolean de l etat de ventilation
+    let temperature = this.manager.checkTempCellule();
+    return temperature;
   }
 
   injection(){

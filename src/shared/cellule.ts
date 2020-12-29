@@ -7,7 +7,7 @@ export class Cellule
   private sondes : Sonde[];
   private volume : number;
   private cereale : Cereale;
-
+  private ventilation : boolean;
 //CONSTRUCTEUR
 
   constructor(numero : number, volume : number)
@@ -54,5 +54,12 @@ export class Cellule
   insecticide(){
     this.cereale.impurete.presenceInsectes = false;
     this.cereale.histo += "Céréale traitée par insecticides";
+  }
+
+  getVentilation(){
+    return this.ventilation;
+  }
+  setVentilation(statut: boolean){
+    this.ventilation = statut;
   }
 }

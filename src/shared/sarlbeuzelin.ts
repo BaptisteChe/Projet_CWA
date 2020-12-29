@@ -39,6 +39,31 @@ export class SARLBeuzelin{
     return SARLBeuzelin.instance;
   }
 
+  checkTempCellule(): number[][]{
+    let temperatures: number[][];
+    let temp: number[];
+    this.silo.getCellules().forEach(cel => {
+      cel.getSondes().forEach(sonde => {
+        temp.push(sonde.getTemperature());
+        if(sonde.getTemperature() >= 30){
+          cel.setVentilation(true);
+        }
+      });
+      temperatures.push(temp);
+    });
+    return temperatures;
+  }
+
+  getCelluleByNum(numCellule){
+    for(let i=0; i<=this.silo.getCellules().length;i++){
+      if(this.silo.getCellules()[i].getNumeroCellule() == numCellule){
+        return this.silo.getCellules()[i].getNumeroCellule();
+      }else{
+        return null;
+      }
+    }
+  }
+
 //FONCTIONS
   InitCamion(){
     for(let i = 0; i < 2; i++)

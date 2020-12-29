@@ -27,6 +27,8 @@ export class SARLBeuzelin{
     this.tremievrac = new TremieVrac();
     this.nettoyeurSeparateur = new NettoyeurSeparateur();
 
+    this.silo = new Silo(137); //137 m3 pour chaque volume
+    this.InitBoisseau();
   }
 
   public static getInstance():SARLBeuzelin{
@@ -48,11 +50,30 @@ export class SARLBeuzelin{
       this.fossesReception[i] = new FosseReception();
   }
 
+  InitBoisseau(){
+    for(let i = 0; i < 3; i++)
+      this.boisseauxChargement[i] = new BoisseauChargement();
+  }
+
+  reception(){
+    for(let i = 0; i < 2; i++)
+    {
+      this.camion[i].generationCereale();
+      this.camion[i].pesee();
+      this.camion[i].echantillonnage();
+      this.fossesReception[i].reception(this.camion[i].vidercamion());
+    }
+  }
+
   traitement(){
 
   }
 
   nettoyage(){
+
+  }
+
+  stockage(){
 
   }
 
@@ -63,5 +84,10 @@ export class SARLBeuzelin{
   injectionProduitInsecticide(){
 
   }
+
+  simulation(){
+
+  }
+
 }
 

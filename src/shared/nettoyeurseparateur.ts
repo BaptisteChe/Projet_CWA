@@ -68,7 +68,7 @@ export class NettoyeurSeparateur
     if(this.cerealesATraiter.masse > this.poids){
       this.bourrage = true;
       this.alarme.setIsActive(true);
-      this.alarme.setCause(CausesAlarme.bourrageTremieVrac);
+      this.alarme.setCause(CausesAlarme.perteDeGrain);
       console.error("Alarme Activée dans le nettoyeur !")
     }
     return this.bourrage;

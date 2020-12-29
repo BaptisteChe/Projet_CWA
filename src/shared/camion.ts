@@ -43,7 +43,10 @@ export class Camion
     }
 
     vidercamion(){
-        this.cereale.histo += "Arrivée de "+this.cereale.nom;
+        this.cereale.histo += " Arrivée de "+this.cereale.nom
+                             +"\n Poid de la céréale : "+this.cereale.masse
+                             +"\n Echantillonnage de la céréale : "+this.cereale.qualite;
+        console.log(this.cereale.histo);
         let c = this.cereale;
         this.cereale = null;
         return c;

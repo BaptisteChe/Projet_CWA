@@ -9,6 +9,15 @@ export class Camion
     constructor(){
         this.cereale = null;
     }
+    
+    isVide(){
+        if(this.cereale == null)
+            return true;
+        else{
+            console.error("Camion non vide");
+        return false;
+        }
+    }
 
     generationCereale(){
         let alea;

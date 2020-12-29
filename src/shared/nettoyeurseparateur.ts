@@ -53,6 +53,10 @@ export class NettoyeurSeparateur
 
 //FONCTIONS
 
+  remplirNettoyeurSeparateur(cereale : Cereale){
+    this.cerealesATraiter = cereale;
+  }
+  
   nettoyer()
   {
     if(!this.bourrageAlarme && !this.isVide()){

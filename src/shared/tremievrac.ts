@@ -38,6 +38,10 @@ export class TremieVrac
     }
   }
 
+  remplirTremie(cereale : Cereale){
+    this.cerealesATraiter = cereale;
+  }
+  
   triage()
   {
     if(!this.bourrageAlarme() && !this.isVide){

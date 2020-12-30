@@ -103,7 +103,7 @@ export class SARLBeuzelin{
           }
       }
     }
-    await this.delay(5000);
+    await this.delay(60000);
   }
 
   async traitement(){
@@ -151,7 +151,7 @@ export class SARLBeuzelin{
   }
 
   public simulation(){
-    for(let i = 0; i < 1000; i++){
+    for(let i = 0; i < 2; i++){
       this.reception();
       this.traitement();
       this.nettoyage();

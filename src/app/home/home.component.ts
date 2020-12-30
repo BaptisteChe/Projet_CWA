@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit {
   graine: Cereale = new Cereale(Nom.Orge);
   alarme: Alarme = new Alarme();
 
+  sarl : SARLBeuzelin = SARLBeuzelin.getInstance();
+
   //graine: Cereale = new Cereale("Orge",30,0.5,"De la merde");
 
   //graines: Cereale[] = CEREALES;

@@ -22,7 +22,22 @@ export class Camion
     generationCereale(){
         let alea;
         alea = this.getRandomInt(0, 4);
-        this.cereale = new Cereale(Nom[alea]);
+        let nom : Nom;
+        switch(alea){
+            case 0: 
+                nom = Nom.Ble;
+                break;
+            case 1: 
+                nom = Nom.Colza;
+                break;
+            case 2:
+                nom = Nom.Orge;
+                break;
+            case 3:
+                nom = Nom.Pois;
+                break;
+        }
+        this.cereale = new Cereale(nom);
     }
 
     getRandomInt(min, max):Number {
@@ -42,8 +57,28 @@ export class Camion
         let alea;
         alea = this.getRandomInt(5, 50);
         this.cereale.tauxHumidite = alea;
+
         alea = this.getRandomInt(0, 5);
-        this.cereale.qualite = Qualite[alea];
+        let qualite : Qualite;
+        switch(alea){
+            case 0: 
+                qualite = Qualite.bonne;
+                break;
+            case 1: 
+                qualite = Qualite.excellente;
+                break;
+            case 2:
+                qualite = Qualite.mediocre;
+                break;
+            case 3:
+                qualite = Qualite.passable;
+                break;
+            case 4:
+                qualite = Qualite.premium;
+                break;
+        }
+        this.cereale.qualite = qualite;
+
         let ge = Boolean(Math.round(Math.random()));
         let pi = Boolean(Math.round(Math.random()));
         let pel = Boolean(Math.round(Math.random()));
@@ -52,9 +87,9 @@ export class Camion
     }
 
     vidercamion(){
-        this.cereale.histo += " Arrivée de "+this.cereale.nom
+        this.cereale.histo += " Arrivée de "+this.cereale.nom.toString()
                              +"\n Poid de la céréale : "+this.cereale.masse
-                             +"\n Echantillonnage de la céréale : "+this.cereale.qualite;
+                             +"\n Echantillonnage de la céréale : "+this.cereale.qualite.toString();
         console.log(this.cereale.histo);
         let c = this.cereale;
         this.cereale = null;

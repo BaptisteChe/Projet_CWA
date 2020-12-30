@@ -26,7 +26,7 @@ export class FosseReception
   {
     if(this.isVide()){
       this.cereale = cereale;
-      this.cereale.histo += "Dans la Fosse";
+      this.cereale.histo += "\n Dans la Fosse";
     }else{
       console.error("La Fosse a déjà une céréale !")
     }

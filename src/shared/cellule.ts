@@ -4,10 +4,11 @@ import { Sonde } from './sonde';
 export class Cellule
 {
   private numeroCellule : number;
-  private sondes : Sonde[];
+  private sondes : Sonde[] = [];
   private volume : number;
   private cereale : Cereale;
   private ventilation : boolean;
+
 //CONSTRUCTEUR
 
   constructor(numero : number, volume : number)
@@ -20,6 +21,19 @@ export class Cellule
   }
 
 //ACCESSEURS
+
+  isVide(){
+    if (this.cereale == null)
+      return true;
+    else
+      return false;
+  }
+
+  ajoutCereale(cereale : Cereale){
+    this.cereale = cereale;
+    this.cereale.histo += "\n Céréale stockée dans la cellule numéro : "+this.getNumeroCellule();
+    console.log(this.cereale.histo);
+  }
 
   getNumeroCellule()
   {

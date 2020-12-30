@@ -80,7 +80,7 @@ export class NettoyeurSeparateur
 
   viderNettoyeur() : Cereale
   {
-    this.cerealesATraiter.histo += "Céréale Traitée par le Nettoyeur - Separateur";
+    this.cerealesATraiter.histo += "\n Céréale Traitée par le Nettoyeur - Separateur";
     let c = this.cerealesATraiter;
     this.cerealesATraiter = null;
     return c;

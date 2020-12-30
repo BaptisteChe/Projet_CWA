@@ -1,10 +1,11 @@
 import { Cellule } from './cellule';
+import { Cereale } from './cereale';
 
 export class Silo
 {
-  private cellules : Cellule[];
+  private cellules : Cellule[] = [];
   /*A tester et à ajouter dans le diag de classe*/ 
-  private volumecellules : number;
+  private volume: number;
 
 //CONSTRUCTEUR
 
@@ -13,7 +14,7 @@ export class Silo
     for(let i = 0; i < 10; i++){
       this.cellules[i] = new Cellule(i,volume);  
     }
-    this.volumecellules = volume;
+    this.volume = volume*10;
   }
 
 //ACCESSEURS
@@ -23,9 +24,16 @@ export class Silo
     return this.cellules;
   }
 
-  setCellules(cellules : Cellule[])
+  getCellule(index : number)
   {
-    this.cellules = cellules;
+    if(this.cellules[index].isVide())
+      return index;
+    else
+      return null;
+  }
+
+  ajoutCereale(cereale :Cereale, index : number){
+    this.cellules[index].ajoutCereale(cereale);
   }
 
 }

@@ -6,7 +6,7 @@ export class Camion
 {
     private cereale : Cereale;
 
-    constructor(){
+    public constructor(){
         this.cereale = null;
     }
     

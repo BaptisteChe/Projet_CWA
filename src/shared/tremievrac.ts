@@ -63,7 +63,7 @@ export class TremieVrac
 
   viderTremie() : Cereale
   {
-    this.cerealesATraiter.histo += "Céréale Traitée par la Trémie-Vrac";
+    this.cerealesATraiter.histo += "\n Céréale Traitée par la Trémie-Vrac";
     let c = this.cerealesATraiter;
     this.cerealesATraiter = null;
     return c;

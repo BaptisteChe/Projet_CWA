@@ -21,6 +21,7 @@ export class Cereale {
     constructor(nom : Nom){
         this.nom = nom;
     }
+
 /*
     constructor(nom: Nom, masse: number, tauxHumidite: number, qualite: Qualite, impurete: Impurete, triee: boolean, nettoyee: boolean, separee: boolean, traitee: boolean) {
         this.nom = nom;

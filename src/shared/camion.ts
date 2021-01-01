@@ -40,7 +40,7 @@ export class Camion
         this.cereale = new Cereale(nom);
     }
 
-    getRandomInt(min, max):Number {
+    getRandomInt(min, max): number {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
@@ -57,6 +57,9 @@ export class Camion
         let alea;
         alea = this.getRandomInt(5, 50);
         this.cereale.tauxHumidite = alea;
+
+        alea = this.getRandomInt(30, 35);
+        this.cereale.temperature = alea;
 
         alea = this.getRandomInt(0, 5);
         let qualite : Qualite;

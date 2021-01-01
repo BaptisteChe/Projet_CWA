@@ -24,7 +24,12 @@ export class Silo
     return this.cellules;
   }
 
-  getCellule(index : number)
+  getCellule(index : number) : Cellule
+  {
+    return this.cellules[index];
+  }
+
+  getCelluleIndex(index : number)
   {
     if(this.cellules[index].isVide())
       return index;
@@ -34,6 +39,23 @@ export class Silo
 
   ajoutCereale(cereale :Cereale, index : number){
     this.cellules[index].ajoutCereale(cereale);
+  }
+
+  viderCellule(index : number) : Cereale
+  {
+    let c = this.getCellule(index).getCereale();
+    this.getCellule(index).setCereale(null);
+    c.histo += "\n Sortie de la cellule numéro : "+index;
+    return c;
+  }
+
+  testpresenceInsecte(index : number) : boolean
+  {
+    let presence = false;
+    if(!this.getCellule(index).isVide())
+      if(this.getCellule(index).getCereale().impurete.presenceInsectes)
+        presence = true;
+    return presence;
   }
 
 }

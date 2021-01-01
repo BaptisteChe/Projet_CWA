@@ -10,6 +10,7 @@ export class Cereale {
     impurete: Impurete;
     element_ind: Element_Indesirable;
     tauxHumidite: number;
+    temperature : number;
     qualite: Qualite;
     triee: boolean;
     nettoyee: boolean;

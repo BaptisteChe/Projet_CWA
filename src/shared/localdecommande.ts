@@ -2,17 +2,18 @@ import { SARLBeuzelin } from "./sarlbeuzelin";
 
 export class LocalDeCommande
 {
-  private temperatureParCellule : number[];
-  private manager: SARLBeuzelin;
+  private temperatureParCellule : number[] = [];
 
 //CONSTRUCTEUR
 
-  constructor()
+  constructor(private manager : SARLBeuzelin)
   {
     //50 cases dans le tableau de température
    for(let i = 0; i < 50; i++){
      this.temperatureParCellule[i] = null;
    }
+   this.manager = manager;
+   this.simulation();
   }
 
 //ACCESSEURS
@@ -30,7 +31,11 @@ export class LocalDeCommande
 
 //FONCTIONS
 
-  checkTemperature()
+  delay(ms: number) {
+   return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  async checkTemperature()
   {
     //parcourir temperature
     //condition sur la temperature
@@ -41,7 +46,15 @@ export class LocalDeCommande
     return temperature;
   }
 
-  injection(){
-    
+  async injection(){
+    this.manager.injectionProduitInsecticide();
+  }
+
+  async simulation(){
+    while(true){
+      await this.delay(10000);
+      this.checkTemperature();
+      this.injection();
+    }
   }
 }

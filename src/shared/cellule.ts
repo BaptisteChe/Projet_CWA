@@ -15,12 +15,16 @@ export class Cellule
   {
     this.numeroCellule = numero;
     for (let i = 0; i < 5; i++){
-      this.sondes[i] = new Sonde(null);
+      this.sondes[i] = new Sonde(0);
     }
     this.volume = volume;
   }
 
 //ACCESSEURS
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 
   isVide(){
     if (this.cereale == null)
@@ -29,13 +33,29 @@ export class Cellule
       return false;
   }
 
+  majTemperature(){
+    if(!this.isVide())
+      for (let i = 0; i < 5; i++){
+        this.sondes[i].setTemperature(this.cereale.temperature);
+      }
+  }
+
   ajoutCereale(cereale : Cereale){
-    this.cereale = cereale;
+    this.setCereale(cereale);
     this.cereale.histo += "\n Céréale stockée dans la cellule numéro : "+this.getNumeroCellule();
     console.log(this.cereale.histo);
   }
 
-  getNumeroCellule()
+  getCereale() : Cereale
+  {
+    return this.cereale;
+  }
+
+  setCereale(cereale : Cereale){
+    this.cereale = cereale;
+  }
+
+  getNumeroCellule() : number
   {
     return this.numeroCellule;
   }
@@ -45,7 +65,7 @@ export class Cellule
     this.numeroCellule = numeroCellule;
   }
 
-  getSondes()
+  getSondes() : Sonde[]
   {
     return this.sondes;
   }
@@ -55,7 +75,7 @@ export class Cellule
     this.sondes = sondes;
   }
 
-  getVolume()
+  getVolume() : number
   {
     return this.volume;
   }
@@ -66,14 +86,27 @@ export class Cellule
   }
 
   insecticide(){
+    console.log("INJECTION");
     this.cereale.impurete.presenceInsectes = false;
     this.cereale.histo += "Céréale traitée par insecticides";
   }
 
-  getVentilation(){
+  getVentilation() : boolean
+  {
     return this.ventilation;
   }
-  setVentilation(statut: boolean){
+
+  async setVentilation(statut: boolean){
     this.ventilation = statut;
+    if(statut = true){
+      if(!this.isVide())
+      {  
+        this.cereale.temperature = 14;
+        this.majTemperature();
+      }
+    }else{
+      this.cereale.temperature++;
+      await this.delay(1000);
+    }
   }
 }

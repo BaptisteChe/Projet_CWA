@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
   alarme: Alarme = new Alarme();
 
   sarl : SARLBeuzelin = SARLBeuzelin.getInstance();
+  local : LocalDeCommande = new LocalDeCommande(this.sarl);
 
   //graine: Cereale = new Cereale("Orge",30,0.5,"De la merde");
 

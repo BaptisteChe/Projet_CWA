@@ -12,10 +12,7 @@ export class SARLBeuzelin{
   private tremievrac : TremieVrac;
   private nettoyeurSeparateur : NettoyeurSeparateur;
   private boisseauxChargement : BoisseauChargement[] = [];
-  private localDeCommande : LocalDeCommande;
-  private cereale : Cereale[];
   private fossesReception : FosseReception[] = [];
-  private lieuxExpedition : string[] = [];
   private camion : Camion[] = [];
   private static instance : SARLBeuzelin;
 
@@ -62,14 +59,16 @@ export class SARLBeuzelin{
   }
 
   checkTempCellule(): number[][]{
-    let temperatures: number[][];
-    let temp: number[];
+    let temperatures: number[][] = [[]];
+    let temp: number[] = [];
+
     this.silo.getCellules().forEach(cel => {
       cel.getSondes().forEach(sonde => {
         temp.push(sonde.getTemperature());
-        if(sonde.getTemperature() >= 30){
+        if(sonde.getTemperature() >= 15){
           cel.setVentilation(true);
-        }
+        }else
+          cel.setVentilation(false);
       });
       temperatures.push(temp);
     });
@@ -115,8 +114,6 @@ export class SARLBeuzelin{
           this.tremievrac.triage();
         }
     }
-
-    await this.delay(5000);
   }
 
   async nettoyage(){
@@ -125,37 +122,49 @@ export class SARLBeuzelin{
       this.nettoyeurSeparateur.remplirNettoyeurSeparateur(this.tremievrac.viderTremie());
       this.nettoyeurSeparateur.nettoyer();
     }
-    await this.delay(5000);
   }
 
   async stockage(){
     for(let i = 0; i < 10; i++){
-      let numcell = this.silo.getCellule(i);
+      let numcell = this.silo.getCelluleIndex(i);
       if(numcell != null)
         if(!this.nettoyeurSeparateur.isVide())
           this.silo.ajoutCereale(this.nettoyeurSeparateur.viderNettoyeur(), i);
     }
-    await this.delay(5000);
   }
 
-  ventilation(){
+  async preparationExpedition(){
+    for(let i = 0; i < 10; i++)
+      if(!this.silo.getCellule(i).isVide())
+        if(!this.silo.testpresenceInsecte(i))
+          if(this.silo.getCellule(i).getCereale().temperature <= 15)
+
+            for(let j = 0; j < 3; j++)
+              if(this.boisseauxChargement[j].isVide())
+                if(!this.silo.getCellule(i).isVide())
+                  this.boisseauxChargement[j].setCereale(this.silo.viderCellule(i));
+  }
+
+  async expedition(){
 
   }
 
   injectionProduitInsecticide(){
-
+    for( let i = 0; i < 10; i++ ){
+      if(!this.silo.getCellule(i).isVide())
+        if(this.silo.testpresenceInsecte(i))
+          this.silo.getCellule(i).insecticide();
+    }
   }
 
-  expedition(){
-
-  }
-
-  public simulation(){
-    for(let i = 0; i < 2; i++){
+  async simulation(){
+    while(true){
       this.reception();
       this.traitement();
       this.nettoyage();
       this.stockage();
+      this.preparationExpedition();
+      await this.delay(5000);
     }
   }
 

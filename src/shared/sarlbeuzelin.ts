@@ -100,6 +100,7 @@ export class SARLBeuzelin{
             if(!this.camion[i].isVide())
               this.fossesReception[j].reception(this.camion[i].vidercamion());
           }
+          await this.delay(20000);
       }
     }
     await this.delay(60000);
@@ -146,7 +147,10 @@ export class SARLBeuzelin{
   }
 
   async expedition(){
-
+    for(let i = 0; i < 3; i++){
+      if(!this.boisseauxChargement[i].isVide())
+        this.boisseauxChargement[i].expedition();
+    }
   }
 
   injectionProduitInsecticide(){
@@ -164,6 +168,7 @@ export class SARLBeuzelin{
       this.nettoyage();
       this.stockage();
       this.preparationExpedition();
+      this.expedition();
       await this.delay(5000);
     }
   }

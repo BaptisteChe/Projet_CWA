@@ -88,7 +88,7 @@ export class Cellule
   insecticide(){
     console.log("INJECTION");
     this.cereale.impurete.presenceInsectes = false;
-    this.cereale.histo += "Céréale traitée par insecticides";
+    this.cereale.histo += "\n Céréale traitée par insecticides";
   }
 
   getVentilation() : boolean

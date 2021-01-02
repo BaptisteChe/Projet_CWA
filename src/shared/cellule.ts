@@ -6,6 +6,7 @@ export class Cellule
   private numeroCellule : number;
   private sondes : Sonde[] = [];
   private volume : number;
+  private pourcentage : number;
   private cereale : Cereale;
   private ventilation : boolean;
 
@@ -14,6 +15,7 @@ export class Cellule
   constructor(numero : number, volume : number)
   {
     this.numeroCellule = numero;
+    this.pourcentage = 0;
     for (let i = 0; i < 5; i++){
       this.sondes[i] = new Sonde(0);
     }
@@ -42,10 +44,23 @@ export class Cellule
 
   ajoutCereale(cereale : Cereale){
     this.setCereale(cereale);
+    this.setPourcentage(((this.cereale.masse*1000)/120)/this.getVolume() *100);
+    console.log(this.getPourcentage());
     this.cereale.histo += "\n Céréale stockée dans la cellule numéro : "+this.getNumeroCellule();
     console.log(this.cereale.histo);
   }
 
+  getPourcentage(){
+    if(this.isVide())
+      return 0;
+    else
+      return Math.round(this.pourcentage);
+  }
+  
+  setPourcentage(pourcentage : number){
+    this.pourcentage = pourcentage;
+  }
+  
   getCereale() : Cereale
   {
     return this.cereale;
@@ -101,7 +116,10 @@ export class Cellule
     if(statut = true){
       if(!this.isVide())
       {  
-        this.cereale.temperature = 14;
+        while(this.cereale.temperature >= 15){
+          this.cereale.temperature--;
+          await this.delay(1000);
+        }
         this.majTemperature();
       }
     }else{

@@ -17,10 +17,11 @@ export class Cereale {
     separee: boolean;
     traitee: boolean;
     expedition : Expedition;
-    histo : string = "";
+    histo : string;
 
     constructor(nom : Nom){
         this.nom = nom;
+        this.histo = "";
     }
 
 /*

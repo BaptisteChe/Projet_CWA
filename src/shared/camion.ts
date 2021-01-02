@@ -9,6 +9,13 @@ export class Camion
     public constructor(){
         this.cereale = null;
     }
+
+    getCereale(){
+        if(this.isVide())
+            return Nom.Rien.toString();
+        else
+            return this.cereale.histo;
+    }
     
     isVide(){
         if(this.cereale == null)
@@ -38,6 +45,7 @@ export class Camion
                 break;
         }
         this.cereale = new Cereale(nom);
+        this.cereale.histo = "Arrivée de "+this.cereale.nom.toString();
     }
 
     getRandomInt(min, max): number {
@@ -48,8 +56,9 @@ export class Camion
 
     pesee(){
         let alea;
-        alea = this.getRandomInt(5, 25);
+        alea = this.getRandomInt(5, 15);
         this.cereale.masse = alea;
+        this.cereale.histo += "\nPoid de la céréale : "+this.cereale.masse;
     }
 
     echantillonnage(){
@@ -87,12 +96,10 @@ export class Camion
         let pel = Boolean(Math.round(Math.random()));
         let pin = Boolean(Math.round(Math.random()));
         this.cereale.impurete = new Impurete(ge,pi,pel,pin);
+        this.cereale.histo += "\nEchantillonnage de la céréale : "+this.cereale.qualite.toString();
     }
 
     vidercamion(){
-        this.cereale.histo += " Arrivée de "+this.cereale.nom.toString()
-                             +"\n Poid de la céréale : "+this.cereale.masse
-                             +"\n Echantillonnage de la céréale : "+this.cereale.qualite.toString();
         console.log(this.cereale.histo);
         let c = this.cereale;
         this.cereale = null;

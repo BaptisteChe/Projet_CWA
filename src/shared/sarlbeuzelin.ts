@@ -6,6 +6,8 @@ import { NettoyeurSeparateur } from 'src/shared/nettoyeurseparateur';
 import { Silo } from 'src/shared/silo';
 import { TremieVrac } from 'src/shared/tremievrac';
 import { Camion } from './camion';
+import { Nom } from './enumeration';
+import { ThemePalette } from '@angular/material/core';
 
 export class SARLBeuzelin{
   private silo : Silo;
@@ -35,6 +37,43 @@ export class SARLBeuzelin{
       SARLBeuzelin.instance = new SARLBeuzelin();
     }
     return SARLBeuzelin.instance;
+  }
+
+//ACCESSEURS
+
+  getRemplissage(index : number){
+    return this.silo.getCellule(index).getPourcentage();
+  }
+
+  getNomCereale(index : number){
+    if(!this.silo.getCellule(index).isVide())
+      return this.silo.getCellule(index).getCereale().nom.toString();
+    else
+      return "vide";
+  }
+
+  getCouleur(index : number) : ThemePalette
+  {
+    if(this.silo != null)
+      if(!this.silo.getCellule(index).isVide()){
+        let nom = this.silo.getCellule(index).getCereale().nom;
+        switch(nom){
+          case Nom.Ble :
+            return 'primary';
+          case Nom.Colza :
+            return 'accent';
+          case Nom.Orge :
+            return 'warn';
+          case Nom.Pois :
+            return 'accent';
+          }
+      }else{
+        return 'warn';
+      }
+  }
+
+  getCamionCereale(index : number){
+    return this.camion[index].getCereale();
   }
 
 //FONCTIONS
@@ -93,6 +132,7 @@ export class SARLBeuzelin{
         this.camion[i].generationCereale();
         this.camion[i].pesee();
         this.camion[i].echantillonnage();
+        await this.delay(5000);
 
         for(let j = 0; j < 2; j++)
           if(this.fossesReception[j].isVide())
@@ -100,7 +140,7 @@ export class SARLBeuzelin{
             if(!this.camion[i].isVide())
               this.fossesReception[j].reception(this.camion[i].vidercamion());
           }
-          await this.delay(20000);
+          await this.delay(2000);
       }
     }
     await this.delay(60000);
@@ -114,6 +154,7 @@ export class SARLBeuzelin{
           this.tremievrac.remplirTremie(this.fossesReception[i].expedition());
           this.tremievrac.triage();
         }
+      await this.delay(20000);
     }
   }
 
@@ -123,6 +164,7 @@ export class SARLBeuzelin{
       this.nettoyeurSeparateur.remplirNettoyeurSeparateur(this.tremievrac.viderTremie());
       this.nettoyeurSeparateur.nettoyer();
     }
+    await this.delay(5000);
   }
 
   async stockage(){
@@ -135,7 +177,7 @@ export class SARLBeuzelin{
   }
 
   async preparationExpedition(){
-    for(let i = 0; i < 10; i++)
+    for(let i = 0; i < 10; i++){
       if(!this.silo.getCellule(i).isVide())
         if(!this.silo.testpresenceInsecte(i))
           if(this.silo.getCellule(i).getCereale().temperature <= 15)
@@ -144,12 +186,15 @@ export class SARLBeuzelin{
               if(this.boisseauxChargement[j].isVide())
                 if(!this.silo.getCellule(i).isVide())
                   this.boisseauxChargement[j].setCereale(this.silo.viderCellule(i));
+      await this.delay(30000);
+    }
   }
 
   async expedition(){
     for(let i = 0; i < 3; i++){
       if(!this.boisseauxChargement[i].isVide())
         this.boisseauxChargement[i].expedition();
+      await this.delay(60000);
     }
   }
 
@@ -164,10 +209,15 @@ export class SARLBeuzelin{
   async simulation(){
     while(true){
       this.reception();
+      //await this.delay(5000);
       this.traitement();
+      //await this.delay(5000);
       this.nettoyage();
+      //await this.delay(5000);
       this.stockage();
+      //await this.delay(5000);
       this.preparationExpedition();
+      //await this.delay(5000);
       this.expedition();
       await this.delay(5000);
     }

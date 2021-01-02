@@ -1,5 +1,5 @@
 export enum Qualite{
-    mediocre = "mediocre",
+    mediocre = "médiocre",
     passable = "passable",
     bonne = "bonne",
     excellente = "excellente",
@@ -8,9 +8,10 @@ export enum Qualite{
 
 export enum Nom{
     Orge = "Orge",
-    Ble = "Ble",
+    Ble = "Blé",
     Colza = "Colza",
     Pois = "Pois",
+    Rien = "Rien",
 }
 
 export enum Expedition{

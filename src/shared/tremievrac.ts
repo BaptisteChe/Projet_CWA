@@ -39,7 +39,8 @@ export class TremieVrac
   }
 
   remplirTremie(cereale : Cereale){
-    this.cerealesATraiter = cereale;
+    if(this.isVide())
+      this.cerealesATraiter = cereale;
   }
   
   triage()
@@ -63,9 +64,12 @@ export class TremieVrac
 
   viderTremie() : Cereale
   {
-    this.cerealesATraiter.histo += "\n Céréale Traitée par la Trémie-Vrac";
-    let c = this.cerealesATraiter;
-    this.cerealesATraiter = null;
-    return c;
+    if(!this.isVide())
+    {
+      this.cerealesATraiter.histo += "\n Céréale Traitée par la Trémie-Vrac";
+      let c = this.cerealesATraiter;
+      this.cerealesATraiter = null;
+      return c;
+    }
   }
 }

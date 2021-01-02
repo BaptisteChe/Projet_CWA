@@ -32,20 +32,21 @@ export class HomeComponent implements OnInit {
     this.AffiCamion=true;
   }
 
-  bar1=10;
-  bar2=50;
-  bar3=90;
-
-  showFiller = false;
-
-  impureter: Impurete = new Impurete(false, false, false, false);
-  graine: Cereale = new Cereale(Nom.Orge);
-  alarme: Alarme = new Alarme();
-
   sarl : SARLBeuzelin = SARLBeuzelin.getInstance();
   local : LocalDeCommande = new LocalDeCommande(this.sarl);
 
-  //graine: Cereale = new Cereale("Orge",30,0.5,"De la merde");
+  bar1 = 0;
+  bar2 = 0;
+  bar3 = 0;
 
-  //graines: Cereale[] = CEREALES;
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  async simulation(){
+    while(true){
+      this.bar1 = this.sarl.getRemplissage(0);
+      await this.delay(30000);
+    }
+  }
 }

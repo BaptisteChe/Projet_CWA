@@ -2,38 +2,45 @@
     <h1>SARL BEUZELIN</h1>
     <mat-tab-group animationDuration="1000ms">
         <mat-tab label="Triage">
-            <p style="margin-top: 10px;">
-                On trie
-            </p>
-            <div style="display:flex; flex-direction: row;">
-            <mat-card class="Pesée">
+            <div fxLayout="row" fxLayoutAlign="space-evenly center" style="display:flex; flex-direction: row; margin-top: 25px;" > 
+              <div style="width: 150px;">
+            <mat-card class="Pesée" style="margin-top: auto; width: 255px; height: 100px; ">
                 <mat-card-header>
-                  <mat-card-title>Pesée</mat-card-title>
+                  <mat-card-title>Camion n°1</mat-card-title>
                 </mat-card-header>
-                <mat-card-content>
-                  <p>
-                    Numéro de lot : 
-                  </p>
-                  <p>
-                    Type : 
-                  </p>
-                  <p>
-                    Poids : 
-                  </p>
+                <mat-card-content>                 
+                  <p style="white-space: pre-wrap;">{{sarl.getCamionCereale(0)}}</p>
                 </mat-card-content>
               </mat-card>
-              <mat-card class="Fleche1">
+
+              <mat-card class="Pesée" style="margin-top: 25px; width: 255px; height: 100px;">
                 <mat-card-header>
-                  <mat-card-title>Transit 1</mat-card-title>
+                  <mat-card-title>Camion n°2</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image  alt="yellowarrow1">
                 <mat-card-content>
-                    <p>
-                      Perte de céréales ?
-                    </p>
-                  </mat-card-content>
+                  <p style="white-space: pre-wrap;">{{sarl.getCamionCereale(1)}}</p>
+                </mat-card-content>
               </mat-card>
-              
+              </div>
+
+              <div>
+              <mat-card class="Fleche1" style="margin-top: auto; margin-left: 30px;height: 100px;">
+                <mat-card-header>
+                  <mat-card-title>Transit Camion n°1</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: 75px; margin-right: auto; transform: rotate(30deg);">
+                
+              </mat-card>
+
+              <mat-card class="Fleche1" style="margin-top: 25px; margin-left: 30px;height: 100px;">
+                <mat-card-header>
+                  <mat-card-title>Transit Camion n°2</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: 75px; margin-right: auto; transform: rotate(340deg);">
+                
+              </mat-card>
+              </div>
+            <div>
               <mat-card class="Triage">
                 <mat-card-header>
                   <mat-card-title>Triage</mat-card-title>
@@ -47,17 +54,21 @@
                   </p>
                 </mat-card-content>
               </mat-card>
+            </div>
+            <div>
               <mat-card class="Fleche2">
                 <mat-card-header>
                   <mat-card-title>Transit 2</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image  alt="yellowarrow2">
+                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: auto; margin-right: auto; transform: rotate(60deg);">
                 <mat-card-content>
                     <p>
                       Perte de céréales ?
                     </p>
                   </mat-card-content>
               </mat-card>
+            </div>
+            <div>
               <mat-card class="Nettoyage">
                 <mat-card-header>
                   <mat-card-title>Nettoyage</mat-card-title>
@@ -70,38 +81,77 @@
                     Poussières inflammables : ?
                   </p>
                 </mat-card-content>
-              </mat-card>  
+              </mat-card> 
+            </div>
+            <div> 
               <mat-card class="Fleche3">
                 <mat-card-header>
                   <mat-card-title>Transit 3</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image  alt="yellowarrow3">
+                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: auto; margin-right: auto; transform: rotate(60deg);">
                 <mat-card-content>
                     <p>
                       Perte de céréales ?
                     </p>
                   </mat-card-content>
               </mat-card> 
+            
+              </div>
             </div>           
               
         </mat-tab>
         <mat-tab label="Cellules">
-            <p style="margin-top: 10px;">
-                Vue des cellules
-            </p>
-            <div>
-                <h3>Cellule 1: Orge</h3>
+            <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 25px;"> 
+
+              <div fxFlex="45">
+                <h3>Cellule 0: {{sarl.getNomCereale(0)}}</h3>
                 <p>
-                    <mat-progress-bar mode="determinate" [value]="bar1" color="primary"></mat-progress-bar>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(0)" [color]="sarl.getCouleur(0)"></mat-progress-bar>
                 </p>
-                <h3>Cellule 2: Blé</h3>
+                <h3>Cellule 1: {{sarl.getNomCereale(1)}}</h3>
                 <p>
-                    <mat-progress-bar mode="determinate" [value]="bar2" color="accent"></mat-progress-bar>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(1)" [color]="sarl.getCouleur(1)"></mat-progress-bar>
                 </p>
-                <h3>Cellule 3: Pois</h3>
+                <h3>Cellule 2: {{sarl.getNomCereale(2)}}</h3>
                 <p>
-                    <mat-progress-bar mode="determinate" [value]="bar3" color="warn"></mat-progress-bar>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(2)" [color]="sarl.getCouleur(2)"></mat-progress-bar>
                 </p>
+                    
+                <h3>Cellule 3: {{sarl.getNomCereale(3)}}</h3>
+                <p>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(3)" [color]="sarl.getCouleur(3)"></mat-progress-bar>
+                </p>
+                <h3>Cellule 4: {{sarl.getNomCereale(4)}}</h3>
+                <p>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(4)" [color]="sarl.getCouleur(4)"></mat-progress-bar>
+                </p>
+              </div> 
+
+              <div fxFlex="45">
+                <h3>Cellule 5: {{sarl.getNomCereale(5)}}</h3>
+                <p>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(5)" [color]="sarl.getCouleur(5)"></mat-progress-bar>
+                </p>
+              
+                <h3>Cellule 6: {{sarl.getNomCereale(6)}}</h3>
+                <p>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(6)" [color]="sarl.getCouleur(6)"></mat-progress-bar>
+                </p>
+                <h3>Cellule 7: {{sarl.getNomCereale(7)}}</h3>
+                <p>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(7)" [color]="sarl.getCouleur(7)"></mat-progress-bar>
+                </p>
+                <h3>Cellule 8: {{sarl.getNomCereale(8)}}</h3>
+                <p>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(8)" [color]="sarl.getCouleur(8)"></mat-progress-bar>
+                </p>
+
+                <h3>Cellule 9: {{sarl.getNomCereale(9)}}</h3>
+                <p>
+                    <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(9)" [color]="sarl.getCouleur(9)"></mat-progress-bar>
+                </p>
+              </div>
+                
             </div>
             <!--
             <div>

@@ -5,16 +5,14 @@ export class Silo
 {
   private cellules : Cellule[] = [];
   /*A tester et à ajouter dans le diag de classe*/ 
-  private volume: number;
 
 //CONSTRUCTEUR
 
-  constructor(volume : number)
+  constructor()
   {
     for(let i = 0; i < 10; i++){
-      this.cellules[i] = new Cellule(i,volume);  
+      this.cellules[i] = new Cellule(i,137);  
     }
-    this.volume = volume*10;
   }
 
 //ACCESSEURS

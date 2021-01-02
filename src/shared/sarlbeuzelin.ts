@@ -1,7 +1,6 @@
 import { Cereale } from 'src/shared/cereale';
 import { BoisseauChargement } from 'src/shared/boisseauchargement';
 import { FosseReception } from 'src/shared/fossereception';
-import { LocalDeCommande } from 'src/shared/localdecommande';
 import { NettoyeurSeparateur } from 'src/shared/nettoyeurseparateur';
 import { Silo } from 'src/shared/silo';
 import { TremieVrac } from 'src/shared/tremievrac';
@@ -29,7 +28,7 @@ export class SARLBeuzelin{
     this.tremievrac = new TremieVrac();
     this.nettoyeurSeparateur = new NettoyeurSeparateur();
 
-    this.silo = new Silo(137); //137 m3 pour chaque volume
+    this.silo = new Silo(); //137 m3 pour chaque volume
     this.initBoisseau();
     this.historiqueCereale = "";
     this.sim = true;

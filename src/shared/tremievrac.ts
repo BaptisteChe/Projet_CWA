@@ -66,7 +66,7 @@ export class TremieVrac
   {
     if(!this.isVide())
     {
-      this.cerealesATraiter.histo += "\n Céréale Traitée par la Trémie-Vrac";
+      this.cerealesATraiter.histo += "\nCéréale Traitée par la Trémie-Vrac";
       let c = this.cerealesATraiter;
       this.cerealesATraiter = null;
       return c;

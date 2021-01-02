@@ -86,14 +86,14 @@ export class NettoyeurSeparateur
         this.bourrage = true;
         this.alarme.setIsActive(true);
         this.alarme.setCause(CausesAlarme.bourrageNettoyeur);
-        console.error("Alarme Activée dans le nettoyeur !")
+        console.error("Alarme Activée dans le Nettoyeur-Séparateur !")
       }
     return this.bourrage;
   }
 
   viderNettoyeur() : Cereale
   {
-    this.cerealesATraiter.histo += "\n Céréale Traitée par le Nettoyeur - Separateur";
+    this.cerealesATraiter.histo += "\nCéréale Traitée par le Nettoyeur - Separateur";
     let c = this.cerealesATraiter;
     this.cerealesATraiter = null;
     return c;

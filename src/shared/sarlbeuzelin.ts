@@ -19,6 +19,7 @@ export class SARLBeuzelin{
   private camion : Camion[] = [];
   private static instance : SARLBeuzelin;
   private sim : boolean;
+  private historiqueCereale : string;
 
 //CONSTRUCTEUR
 
@@ -30,6 +31,7 @@ export class SARLBeuzelin{
 
     this.silo = new Silo(137); //137 m3 pour chaque volume
     this.InitBoisseau();
+    this.historiqueCereale = "";
     this.sim = true;
     this.simulation();
   }
@@ -48,11 +50,15 @@ export class SARLBeuzelin{
     return this.silo.getCellule(index).getPourcentage();
   }
 
-  getNomCereale(index : number){
+  getSiloCereale(index : number){
     if(!this.silo.getCellule(index).isVide())
-      return this.silo.getCellule(index).getCereale().nom.toString();
+      return this.silo.getCellule(index).getCereale();
     else
-      return "vide";
+      return new Cereale(Nom.Rien);
+  }
+
+  getSilo(){
+    return this.silo;
   }
 
   getCouleur(index : number) : ThemePalette
@@ -93,6 +99,11 @@ export class SARLBeuzelin{
 
   getBoisseau(index : number){
     return this.boisseauxChargement[index];
+  }
+
+  getHistoriqueCereale(){
+    if(this.historiqueCereale != null)
+      return this.historiqueCereale;
   }
 
 //FONCTIONS
@@ -218,7 +229,7 @@ export class SARLBeuzelin{
     for(let i = 0; i < 3; i++){
       if(!this.boisseauxChargement[i].isVide()){
         await this.delay(20000);
-        this.boisseauxChargement[i].expedition();
+          this.historiqueCereale += this.boisseauxChargement[i].expedition().histo;
       }
       await this.delay(30000);
     }
@@ -228,7 +239,7 @@ export class SARLBeuzelin{
     for( let i = 0; i < 10; i++ ){
       if(!this.silo.getCellule(i).isVide())
         if(this.silo.testpresenceInsecte(i))
-          this.silo.getCellule(i).insecticide();
+          this.silo.getCellule(i).injectionInsecticide();
     }
   }
 

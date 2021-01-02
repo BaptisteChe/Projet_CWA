@@ -20,6 +20,7 @@ export class Cellule
       this.sondes[i] = new Sonde(0);
     }
     this.volume = volume;
+    this.ventilation = false;
   }
 
 //ACCESSEURS
@@ -46,7 +47,7 @@ export class Cellule
     this.setCereale(cereale);
     this.setPourcentage(((this.cereale.masse*1000)/120)/this.getVolume() *100);
     console.log(this.getPourcentage());
-    this.cereale.histo += "\n Céréale stockée dans la cellule numéro : "+this.getNumeroCellule();
+    this.cereale.histo += "\nCéréale stockée dans la cellule numéro : "+this.getNumeroCellule();
     console.log(this.cereale.histo);
   }
 
@@ -100,13 +101,13 @@ export class Cellule
     this.volume = volume;
   }
 
-  insecticide(){
+  injectionInsecticide(){
     console.log("INJECTION");
     this.cereale.impurete.presenceInsectes = false;
-    this.cereale.histo += "\n Céréale traitée par insecticides";
+    this.cereale.histo += "\nCéréale traitée par insecticides";
   }
 
-  getVentilation() : boolean
+  getVentilation()
   {
     return this.ventilation;
   }
@@ -117,12 +118,14 @@ export class Cellule
       if(!this.isVide())
       {  
         while(this.cereale.temperature >= 15){
+          this.ventilation = true;
           this.cereale.temperature--;
-          await this.delay(1000);
+          await this.delay(3000);
         }
         this.majTemperature();
       }
     }else{
+      this.ventilation = false;
       this.cereale.temperature++;
       await this.delay(1000);
     }

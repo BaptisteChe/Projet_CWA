@@ -45,7 +45,7 @@ export class Silo
   {
     let c = this.getCellule(index).getCereale();
     this.getCellule(index).setCereale(null);
-    c.histo += "\n Sortie de la cellule numéro : "+index;
+    c.histo += "\nSortie de la cellule numéro : "+index;
     return c;
   }
 

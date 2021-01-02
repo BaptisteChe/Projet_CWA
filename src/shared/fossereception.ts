@@ -35,7 +35,7 @@ export class FosseReception
   {
     if(this.isVide()){
       this.cereale = cereale;
-      this.cereale.histo += "\n Dans la Fosse";
+      this.cereale.histo += "\nPassée dans la Fosse";
     }else{
       console.error("La Fosse a déjà une céréale !")
     }
@@ -43,7 +43,6 @@ export class FosseReception
 
   expedition() : Cereale
   {
-    this.cereale.histo += "\n Check Fosse";
     console.log(this.cereale.histo);
     let c : Cereale = this.cereale;
     this.cereale = null;

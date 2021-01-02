@@ -115,49 +115,49 @@
             <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 25px;"> 
 
               <div fxFlex="45">
-                <h3>Cellule 0: {{sarl.getNomCereale(0)}}</h3>
+                <h3>Cellule 0: {{sarl.getSiloCereale(0).nom.toString()}}   -  Température : {{sarl.getSiloCereale(0).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(0).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(0)" [color]="sarl.getCouleur(0)"></mat-progress-bar>
                 </p>
-                <h3>Cellule 1: {{sarl.getNomCereale(1)}}</h3>
+                <h3>Cellule 1: {{sarl.getSiloCereale(1).nom.toString()}}   -  Température : {{sarl.getSiloCereale(1).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(1).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(1)" [color]="sarl.getCouleur(1)"></mat-progress-bar>
                 </p>
-                <h3>Cellule 2: {{sarl.getNomCereale(2)}}</h3>
+                <h3>Cellule 2: {{sarl.getSiloCereale(2).nom.toString()}}   -  Température : {{sarl.getSiloCereale(2).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(2).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(2)" [color]="sarl.getCouleur(2)"></mat-progress-bar>
                 </p>
                     
-                <h3>Cellule 3: {{sarl.getNomCereale(3)}}</h3>
+                <h3>Cellule 3: {{sarl.getSiloCereale(3).nom.toString()}}   -  Température : {{sarl.getSiloCereale(3).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(3).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(3)" [color]="sarl.getCouleur(3)"></mat-progress-bar>
                 </p>
-                <h3>Cellule 4: {{sarl.getNomCereale(4)}}</h3>
+                <h3>Cellule 4: {{sarl.getSiloCereale(4).nom.toString()}}   -  Température : {{sarl.getSiloCereale(4).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(4).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(4)" [color]="sarl.getCouleur(4)"></mat-progress-bar>
                 </p>
               </div> 
 
               <div fxFlex="45">
-                <h3>Cellule 5: {{sarl.getNomCereale(5)}}</h3>
+                <h3>Cellule 5: {{sarl.getSiloCereale(5).nom.toString()}}   -  Température : {{sarl.getSiloCereale(5).temperature}}°C   -  Ventilation activée : {{sarl.getSilo().getCellule(5).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(5)" [color]="sarl.getCouleur(5)"></mat-progress-bar>
                 </p>
               
-                <h3>Cellule 6: {{sarl.getNomCereale(6)}}</h3>
+                <h3>Cellule 6: {{sarl.getSiloCereale(6).nom.toString()}}   -  Température : {{sarl.getSiloCereale(6).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(6).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(6)" [color]="sarl.getCouleur(6)"></mat-progress-bar>
                 </p>
-                <h3>Cellule 7: {{sarl.getNomCereale(7)}}</h3>
+                <h3>Cellule 7: {{sarl.getSiloCereale(7).nom.toString()}}   -  Température : {{sarl.getSiloCereale(7).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(7).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(7)" [color]="sarl.getCouleur(7)"></mat-progress-bar>
                 </p>
-                <h3>Cellule 8: {{sarl.getNomCereale(8)}}</h3>
+                <h3>Cellule 8: {{sarl.getSiloCereale(8).nom.toString()}}   -  Température : {{sarl.getSiloCereale(8).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(8).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(8)" [color]="sarl.getCouleur(8)"></mat-progress-bar>
                 </p>
 
-                <h3>Cellule 9: {{sarl.getNomCereale(9)}}</h3>
+                <h3>Cellule 9: {{sarl.getSiloCereale(9).nom.toString()}}   -  Température : {{sarl.getSiloCereale(9).temperature}}°C  -  Ventilation activée : {{sarl.getSilo().getCellule(9).getVentilation()}}</h3>
                 <p>
                     <mat-progress-bar mode="determinate" [value]="sarl.getRemplissage(9)" [color]="sarl.getCouleur(9)"></mat-progress-bar>
                 </p>
@@ -182,9 +182,9 @@
           -->
         </mat-tab>
          <mat-tab label="Boisseau">
-            <div fxLayout="row" fxLayoutAlign="space-around stretch" style="margin-top: 25px;">             
-              <div style="margin-top: 75px;">
-                <mat-card style="margin-top: auto; width: 355px; height: 150px; overflow-y: scroll; ">
+            <div fxLayout="row" fxLayoutAlign="space-around stretch" style="margin-top: 10px;">             
+              <div>
+                <mat-card style="margin-top: auto; width: 355px; height: 200px;">
                     <mat-card-header>
                       <mat-card-title>Boisseau n°1</mat-card-title>
                     </mat-card-header>
@@ -193,7 +193,7 @@
                     </mat-card-content>
                   </mat-card>
     
-                  <mat-card style="margin-top: 25px; width: 355px; height: 150px; overflow-y: scroll;">
+                  <mat-card style="margin-top: 10px; width: 355px; height: 200px;">
                     <mat-card-header>
                       <mat-card-title>Boisseau n°2</mat-card-title>
                     </mat-card-header>
@@ -202,7 +202,7 @@
                     </mat-card-content>
                   </mat-card>
 
-                  <mat-card style="margin-top: 25px; width: 355px; height: 150px; overflow-y: scroll;">
+                  <mat-card style="margin-top: 10px; width: 355px; height: 200px;">
                     <mat-card-header>
                       <mat-card-title>Boisseau n°3</mat-card-title>
                     </mat-card-header>
@@ -218,12 +218,8 @@
                     <mat-card-title>Historique</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
-                        <p>
-                          Type de céréale :
-                          Poids :
-                          Qualité : 
-                          Numéro de commande :
-                          Lieu de destination :
+                        <p style="white-space: pre-wrap;">
+                          {{sarl.getHistoriqueCereale()}}
                         </p>
                       </mat-card-content>
                       <mat-card-actions>

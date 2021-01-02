@@ -47,8 +47,10 @@ export class BoisseauChargement
       this.cereale.histo = histo;
       console.log(this.cereale.histo);
       //this.ecrireJSON(this.cereale);
-      
+      let c = this.cereale;
       this.cereale = null;
+
+      return c;
   }
 /*
   ecrireJSON(variable : Cereale){

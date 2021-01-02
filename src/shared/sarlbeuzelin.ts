@@ -6,8 +6,9 @@ import { NettoyeurSeparateur } from 'src/shared/nettoyeurseparateur';
 import { Silo } from 'src/shared/silo';
 import { TremieVrac } from 'src/shared/tremievrac';
 import { Camion } from './camion';
-import { Nom } from './enumeration';
+import { CausesAlarme, Nom } from './enumeration';
 import { ThemePalette } from '@angular/material/core';
+import { Alarme } from './alarme';
 
 export class SARLBeuzelin{
   private silo : Silo;
@@ -17,6 +18,7 @@ export class SARLBeuzelin{
   private fossesReception : FosseReception[] = [];
   private camion : Camion[] = [];
   private static instance : SARLBeuzelin;
+  private sim : boolean;
 
 //CONSTRUCTEUR
 
@@ -28,6 +30,7 @@ export class SARLBeuzelin{
 
     this.silo = new Silo(137); //137 m3 pour chaque volume
     this.InitBoisseau();
+    this.sim = true;
     this.simulation();
   }
 
@@ -74,6 +77,22 @@ export class SARLBeuzelin{
 
   getCamionCereale(index : number){
     return this.camion[index].getCereale();
+  }
+
+  getFosseReception(index : number){
+    return this.fossesReception[index].getCereale();
+  }
+
+  getTremie(){
+    return this.tremievrac;
+  }
+
+  getNettoyeur(){
+    return this.nettoyeurSeparateur;
+  }
+
+  getBoisseau(index : number){
+    return this.boisseauxChargement[index];
   }
 
 //FONCTIONS
@@ -158,13 +177,14 @@ export class SARLBeuzelin{
     }
   }
 
-  async nettoyage(){
+  async nettoyage(){;
     if(this.nettoyeurSeparateur.isVide())
     {  
       this.nettoyeurSeparateur.remplirNettoyeurSeparateur(this.tremievrac.viderTremie());
       this.nettoyeurSeparateur.nettoyer();
+      await this.delay(2000);
     }
-    await this.delay(5000);
+    await this.delay(20000);
   }
 
   async stockage(){
@@ -177,6 +197,7 @@ export class SARLBeuzelin{
   }
 
   async preparationExpedition(){
+    await this.delay(10000);
     for(let i = 0; i < 10; i++){
       if(!this.silo.getCellule(i).isVide())
         if(!this.silo.testpresenceInsecte(i))
@@ -185,16 +206,21 @@ export class SARLBeuzelin{
             for(let j = 0; j < 3; j++)
               if(this.boisseauxChargement[j].isVide())
                 if(!this.silo.getCellule(i).isVide())
+                {  
                   this.boisseauxChargement[j].setCereale(this.silo.viderCellule(i));
+                  await this.delay(10000);
+                }
       await this.delay(30000);
     }
   }
 
   async expedition(){
     for(let i = 0; i < 3; i++){
-      if(!this.boisseauxChargement[i].isVide())
+      if(!this.boisseauxChargement[i].isVide()){
+        await this.delay(20000);
         this.boisseauxChargement[i].expedition();
-      await this.delay(60000);
+      }
+      await this.delay(30000);
     }
   }
 
@@ -206,19 +232,52 @@ export class SARLBeuzelin{
     }
   }
 
+  async maintenance(alarme : Alarme){
+    if(alarme.getCause() == CausesAlarme.bourrageTremieVrac)
+    {
+      await this.delay(10000);
+      this.tremievrac.setBourrage(false);
+      this.sim = true;
+      this.simulation();
+    }else{
+      await this.delay(10000);
+      this.nettoyeurSeparateur.setBourrage(false);
+      this.sim = true;
+      this.simulation();
+    }
+  }
+
   async simulation(){
-    while(true){
+    while(this.sim == true){
       this.reception();
       //await this.delay(5000);
       this.traitement();
-      //await this.delay(5000);
-      this.nettoyage();
-      //await this.delay(5000);
-      this.stockage();
-      //await this.delay(5000);
-      this.preparationExpedition();
-      //await this.delay(5000);
-      this.expedition();
+      if(this.tremievrac.getAlarme().getIsActive())
+      {
+          this.sim = false;
+          alert(this.tremievrac.getAlarme().getCause().toString());
+          this.maintenance(this.tremievrac.getAlarme());
+      }
+      else
+      {
+        //await this.delay(5000);
+        this.nettoyage();
+        if(this.nettoyeurSeparateur.getAlarme().getIsActive())
+        {  
+          this.sim = false;
+          alert(this.nettoyeurSeparateur.getAlarme().getCause().toString());
+          this.maintenance(this.nettoyeurSeparateur.getAlarme());
+        }
+        else
+        {
+          //await this.delay(5000);
+          this.stockage();
+          //await this.delay(5000);
+          this.preparationExpedition();
+          //await this.delay(5000);
+          this.expedition();
+        }
+      }
       await this.delay(5000);
     }
   }

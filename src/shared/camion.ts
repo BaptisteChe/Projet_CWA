@@ -56,7 +56,7 @@ export class Camion
 
     pesee(){
         let alea;
-        alea = this.getRandomInt(5, 15);
+        alea = this.getRandomInt(5, 17);
         this.cereale.masse = alea;
         this.cereale.histo += "\nPoid de la céréale : "+this.cereale.masse;
     }

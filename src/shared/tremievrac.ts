@@ -1,6 +1,6 @@
 import { Alarme } from './alarme';
 import { Cereale } from './cereale';
-import { CausesAlarme, Element_Indesirable } from './enumeration';
+import { CausesAlarme, Element_Indesirable, Nom } from './enumeration';
 
 
 export class TremieVrac
@@ -16,7 +16,7 @@ export class TremieVrac
   {
     this.bourrage = false;
     this.cerealesATraiter = null;
-    this.poids = 50;
+    this.poids = 15;
     this.alarme = new Alarme();
   }
 
@@ -24,6 +24,18 @@ export class TremieVrac
   getAlarme()
   {
     return this.alarme;
+  }
+
+  getCereale(){
+    if(this.isVide())
+      return Nom.Rien;
+    else
+      return this.cerealesATraiter.nom;
+  }
+
+  setBourrage(bourrage : boolean){
+    this.bourrage = bourrage;
+    this.alarme.setIsActive(bourrage);
   }
 
 //FONCTIONS
@@ -53,12 +65,13 @@ export class TremieVrac
 
   bourrageAlarme() : boolean
   {
-    if(this.cerealesATraiter.masse > this.poids){
-      this.bourrage = true;
-      this.alarme.setIsActive(true);
-      this.alarme.setCause(CausesAlarme.bourrageTremieVrac);
-      console.error("Alarme Activée dans la Tremie Vrac !");
-    }
+    if(!this.isVide())
+      if(this.cerealesATraiter.masse > this.poids){
+        this.bourrage = true;
+        this.alarme.setIsActive(true);
+        this.alarme.setCause(CausesAlarme.bourrageTremieVrac);
+        console.error("Alarme Activée dans la Tremie Vrac !");
+      }
     return this.bourrage;
   }
 

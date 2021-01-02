@@ -1,4 +1,5 @@
 import { Cereale } from './cereale';
+import { Nom } from './enumeration';
 
 export class FosseReception
 {
@@ -10,6 +11,14 @@ export class FosseReception
   {
     this.cereale = null;
   }
+
+  getCereale(){
+    if(this.isVide())
+      return Nom.Rien;
+    else
+      return this.cereale.nom;
+  }
+
 
 //FONCTIONS
 

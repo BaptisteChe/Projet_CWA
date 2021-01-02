@@ -27,8 +27,6 @@ export enum Element_Indesirable{
 }
 
 export enum CausesAlarme{
-    bourrageTremieVrac = "bourrageTremieVrac",
-    perteDeGrain = "perteDeGrain",
-    incendie = "incendie",
-    ok = "ok"
+    bourrageTremieVrac = "Bourrage de la Tremie-Vrac",
+    bourrageNettoyeur = "Bourrage du Nettoyeur-Separateur",
 }

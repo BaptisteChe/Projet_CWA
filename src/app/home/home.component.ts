@@ -13,7 +13,6 @@ import {Sonde} from 'src/shared/sonde';
 import {TremieVrac} from 'src/shared/tremievrac';
 import { CausesAlarme, Nom } from 'src/shared/enumeration';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -35,18 +34,9 @@ export class HomeComponent implements OnInit {
   sarl : SARLBeuzelin = SARLBeuzelin.getInstance();
   local : LocalDeCommande = new LocalDeCommande(this.sarl);
 
-  bar1 = 0;
-  bar2 = 0;
-  bar3 = 0;
+  alarmeeteinte = '<img mat-card-image  alt="alarmeActive" src="../../assets/alarme.png" style="width: 100px; margin-right: auto; margin-left: 20px;">';
 
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
-  }
-
-  async simulation(){
-    while(true){
-      this.bar1 = this.sarl.getRemplissage(0);
-      await this.delay(30000);
-    }
   }
 }

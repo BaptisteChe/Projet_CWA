@@ -24,33 +24,42 @@
               </div>
 
               <div>
-              <mat-card class="Fleche1" style="margin-top: auto; margin-left: 30px;height: 100px;">
+              <mat-card class="Fleche1" style="margin-top: auto; margin-left: 70px;height: 120px;">
                 <mat-card-header>
-                  <mat-card-title>Transit Camion n°1</mat-card-title>
+                  <mat-card-title>Fosse de reception n°1</mat-card-title>
                 </mat-card-header>
+                <p style="text-align: center;">Vers la Trémie <br></p>
                 <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: 75px; margin-right: auto; transform: rotate(30deg);">
-                
+                <p style="text-align: center;">Céréale en attente :{{sarl.getFosseReception(0)}}</p>
               </mat-card>
 
-              <mat-card class="Fleche1" style="margin-top: 25px; margin-left: 30px;height: 100px;">
+              <mat-card class="Fleche1" style="margin-top: 25px; margin-left: 70px;height: 120px;">
                 <mat-card-header>
-                  <mat-card-title>Transit Camion n°2</mat-card-title>
+                  <mat-card-title>Fosse de reception n°2</mat-card-title>
                 </mat-card-header>
+                <p style="text-align: center;">Vers la Trémie <br></p>
                 <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: 75px; margin-right: auto; transform: rotate(340deg);">
-                
+                <p style="text-align: center;">Céréale en attente :{{sarl.getFosseReception(1)}}</p>
               </mat-card>
               </div>
             <div>
               <mat-card class="Triage">
                 <mat-card-header>
-                  <mat-card-title>Triage</mat-card-title>
+                  <mat-card-title>Trémie-Vrac</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                   <p>
-                    Numéro de lot : 
-                  </p>
-                  <p>
-                    Bourrage : ?
+                    Type de Céréale : {{sarl.getTremie().getCereale().toString()}}<br>
+                    Bourrage : <br>
+                    <ng-template [ngIf]="sarl.getTremie().getAlarme().getIsActive()" [ngIfThen]="ActiveeT" [ngIfElse]="EteinteT">
+                    </ng-template>
+                    <ng-template #ActiveeT>
+                      <br><img mat-card-image  alt="alarmeActive" src="../../assets/alarme.png" style="width: 100px; margin-right: auto; margin-left: 20px;">
+                      <p style="text-align: center;">Maintenance en cours</p>
+                    </ng-template>
+                    <ng-template #EteinteT>
+                      <br><img mat-card-image  alt="alarmeActive" src="../../assets/alarmeEteinte.png" style="width: 100px; margin-right: auto; margin-left: 20px;">
+                    </ng-template>
                   </p>
                 </mat-card-content>
               </mat-card>
@@ -58,27 +67,33 @@
             <div>
               <mat-card class="Fleche2">
                 <mat-card-header>
-                  <mat-card-title>Transit 2</mat-card-title>
+                  <mat-card-title>Acheminement</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: auto; margin-right: auto; transform: rotate(60deg);">
-                <mat-card-content>
-                    <p>
-                      Perte de céréales ?
-                    </p>
-                  </mat-card-content>
+                  <p style="text-align: center;">De la Trémie vers le Nettoyeur</p>
+                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-right: auto; margin-left: 65px;">
+                
               </mat-card>
             </div>
             <div>
               <mat-card class="Nettoyage">
                 <mat-card-header>
-                  <mat-card-title>Nettoyage</mat-card-title>
+                  <mat-card-title>Nettoyeur-Separateur</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                   <p>
-                    Numéro de lot : 
-                  </p>
-                  <p>
-                    Poussières inflammables : ?
+                    Type de Céréale : {{sarl.getNettoyeur().getCereale().toString()}}<br>
+                    Bourrage : <br>
+                    
+                    <ng-template [ngIf]="sarl.getNettoyeur().getAlarme().getIsActive()" [ngIfThen]="ActiveeN" [ngIfElse]="EteinteN">
+                    </ng-template>
+                    <ng-template #ActiveeN>
+                      <br><img mat-card-image  alt="alarmeActive" src="../../assets/alarme.png" style="width: 100px; margin-right: auto; margin-left: 60px;">
+                      <p style="text-align: center;">Maintenance en cours</p>
+                    </ng-template>
+                    <ng-template #EteinteN>
+                      <br><img mat-card-image  alt="alarmeActive" src="../../assets/alarmeEteinte.png" style="width: 100px; margin-right: auto; margin-left: 60px;">
+                    </ng-template>
+
                   </p>
                 </mat-card-content>
               </mat-card> 
@@ -86,14 +101,10 @@
             <div> 
               <mat-card class="Fleche3">
                 <mat-card-header>
-                  <mat-card-title>Transit 3</mat-card-title>
+                  <mat-card-title>Transit Stockage</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: auto; margin-right: auto; transform: rotate(60deg);">
-                <mat-card-content>
-                    <p>
-                      Perte de céréales ?
-                    </p>
-                  </mat-card-content>
+                <p style="text-align: center;">Acheminées vers les cellules</p>
+                <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: auto; margin-right: auto; margin-left: 65px;">
               </mat-card> 
             
               </div>
@@ -171,32 +182,42 @@
           -->
         </mat-tab>
          <mat-tab label="Boisseau">
-            <div fxLayout="row" fxLayoutAlign="space-around stretch">             
-                <div>
-                    <mat-card style="height:700px; width:600px;overflow-y: scroll;">
-                        <mat-card-header>
-                          <mat-card-title>Boisseau</mat-card-title>
-                        </mat-card-header>
-                        <!--<img mat-card-image src="../../assets/boisseau.jpg" alt="camion">-->
-                        <mat-card-content>
-                          <p>
-                            Type de céréale :
-                            Poids :
-                            Qualité : 
-                            En attente de chargement : 
-                          </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                        </mat-card-actions>
-                      </mat-card>
-                </div>
+            <div fxLayout="row" fxLayoutAlign="space-around stretch" style="margin-top: 25px;">             
+              <div style="margin-top: 75px;">
+                <mat-card style="margin-top: auto; width: 355px; height: 150px; overflow-y: scroll; ">
+                    <mat-card-header>
+                      <mat-card-title>Boisseau n°1</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>                 
+                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(0).getCereale()}}</p>
+                    </mat-card-content>
+                  </mat-card>
+    
+                  <mat-card style="margin-top: 25px; width: 355px; height: 150px; overflow-y: scroll;">
+                    <mat-card-header>
+                      <mat-card-title>Boisseau n°2</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(1).getCereale()}}</p>
+                    </mat-card-content>
+                  </mat-card>
 
-                <div>
-                  <mat-card style="height:700px; width:600px;overflow-y: scroll;">
-                      <mat-card-header>
-                        <mat-card-title>Historique</mat-card-title>
-                      </mat-card-header>
-                      <mat-card-content>
+                  <mat-card style="margin-top: 25px; width: 355px; height: 150px; overflow-y: scroll;">
+                    <mat-card-header>
+                      <mat-card-title>Boisseau n°3</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(2).getCereale()}}</p>
+                    </mat-card-content>
+                  </mat-card>
+              </div>
+
+              <div>
+                <mat-card style="height:700px; width:600px;overflow-y: scroll;">
+                  <mat-card-header>
+                    <mat-card-title>Historique</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
                         <p>
                           Type de céréale :
                           Poids :

@@ -1,6 +1,6 @@
 import { Alarme } from './alarme';
 import { Cereale } from './cereale';
-import { CausesAlarme } from './enumeration';
+import { CausesAlarme, Nom } from './enumeration';
 
 export class NettoyeurSeparateur
 {
@@ -15,7 +15,7 @@ export class NettoyeurSeparateur
   {
     this.bourrage = false;
     this.cerealesATraiter = null;
-    this.poids = 20;
+    this.poids = 15;
     this.alarme = new Alarme();
   }
 
@@ -39,12 +39,25 @@ export class NettoyeurSeparateur
   setBourrage(bourrage : boolean)
   {
     this.bourrage = bourrage;
+    this.alarme.setIsActive(bourrage);
+  }
+
+  getAlarme(){
+    return this.alarme;
   }
 
   getCerealesATraiter()
   {
     return this.cerealesATraiter;
   }
+
+  getCereale(){
+    if(this.isVide())
+      return Nom.Rien;
+    else
+      return this.cerealesATraiter.nom;
+  }
+
 
   setCerealesATraiter(cerealesATraiter : Cereale )
   {
@@ -59,7 +72,7 @@ export class NettoyeurSeparateur
   
   nettoyer()
   {
-    if(!this.bourrageAlarme && !this.isVide()){
+    if(!this.bourrageAlarme() && !this.isVide()){
       this.cerealesATraiter.nettoyee = true;
       this.cerealesATraiter.impurete.grosElements = false;
       this.cerealesATraiter.impurete.poussieresInflammables = false;
@@ -69,12 +82,13 @@ export class NettoyeurSeparateur
 
   bourrageAlarme() : boolean
   {
-    if(this.cerealesATraiter.masse > this.poids){
-      this.bourrage = true;
-      this.alarme.setIsActive(true);
-      this.alarme.setCause(CausesAlarme.perteDeGrain);
-      console.error("Alarme Activée dans le nettoyeur !")
-    }
+    if(!this.isVide())
+      if(this.cerealesATraiter.masse > this.poids){
+        this.bourrage = true;
+        this.alarme.setIsActive(true);
+        this.alarme.setCause(CausesAlarme.bourrageNettoyeur);
+        console.error("Alarme Activée dans le nettoyeur !")
+      }
     return this.bourrage;
   }
 

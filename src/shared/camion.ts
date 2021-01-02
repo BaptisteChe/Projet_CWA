@@ -21,8 +21,7 @@ export class Camion
         if(this.cereale == null)
             return true;
         else{
-            console.error("Camion non vide");
-        return false;
+            return false;
         }
     }
 

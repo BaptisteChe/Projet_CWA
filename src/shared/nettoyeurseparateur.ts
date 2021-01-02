@@ -26,7 +26,6 @@ export class NettoyeurSeparateur
     if(this.cerealesATraiter == null)
       return true;
     else{
-      console.error("Nettoyeur Separateur non vide");
       return false;
     }
   }

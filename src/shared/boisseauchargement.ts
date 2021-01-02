@@ -1,4 +1,3 @@
-import { writeFile } from 'fs';
 import { Cereale } from './cereale';
 import { Expedition, Nom } from './enumeration';
 
@@ -33,7 +32,6 @@ export class BoisseauChargement
     if(this.cereale == null)
       return true;
     else{
-      console.error("Boisseau de chargement non vide")
       return false;
     }
   }
@@ -44,15 +42,15 @@ export class BoisseauChargement
   {
       let histo = "---------------------------------------------------\n";
       //alert("Cereale de type : " + this.cereale.nom + "<br> poids : " + this.cereale.masse + "<br> taux d'humidite : " + this.cereale.tauxHumidite + "<br> qualite : " + this.cereale.qualite + "<br> details de l'expedition : " + this.cereale.detailsExpedition());
-      this.cereale.histo += "\n Céréale chargée et au départ de : " + this.genererLieuExpedition();
+      this.cereale.histo += "\nCéréale chargée et au départ de : " + this.genererLieuExpedition();
       histo += this.cereale.histo+"\n---------------------------------------------------\n\n";
       this.cereale.histo = histo;
       console.log(this.cereale.histo);
-      this.ecrireJSON(this.cereale);
+      //this.ecrireJSON(this.cereale);
       
       this.cereale = null;
   }
-
+/*
   ecrireJSON(variable : Cereale){
     
     let val = JSON.parse(JSON.stringify(variable));
@@ -63,7 +61,7 @@ export class BoisseauChargement
       }
     });
   }
-
+*/
   genererLieuExpedition() : Expedition
   {
     let nbr = Math.round(Math.random());

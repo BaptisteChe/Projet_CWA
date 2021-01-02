@@ -45,7 +45,6 @@ export class TremieVrac
     if(this.cerealesATraiter == null)
       return true;
     else{
-      console.error("Tremie vrac non vide");
       return false;
     }
   }

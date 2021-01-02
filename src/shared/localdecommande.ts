@@ -16,19 +16,6 @@ export class LocalDeCommande
    this.simulation();
   }
 
-//ACCESSEURS
-
-  getTemperatureParCellule()//parcour temperature retourne temperature moyenne de chaque cellule
-  {
-    return this.temperatureParCellule;
-  }
-
-  setTemperatureParCellule( temperatureParCellule : number[])
-  {
-    this.temperatureParCellule = temperatureParCellule;
-  }
-
-
 //FONCTIONS
 
   delay(ms: number) {

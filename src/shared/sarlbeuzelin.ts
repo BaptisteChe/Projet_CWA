@@ -16,7 +16,7 @@ export class SARLBeuzelin{
   private nettoyeurSeparateur : NettoyeurSeparateur;
   private boisseauxChargement : BoisseauChargement[] = [];
   private fossesReception : FosseReception[] = [];
-  private camion : Camion[] = [];
+  private camions : Camion[] = [];
   private static instance : SARLBeuzelin;
   private sim : boolean;
   private historiqueCereale : string;
@@ -24,13 +24,13 @@ export class SARLBeuzelin{
 //CONSTRUCTEUR
 
   private constructor(){
-    this.InitCamion();
-    this.InitFosseReception();
+    this.initCamion();
+    this.initFosseReception();
     this.tremievrac = new TremieVrac();
     this.nettoyeurSeparateur = new NettoyeurSeparateur();
 
     this.silo = new Silo(137); //137 m3 pour chaque volume
-    this.InitBoisseau();
+    this.initBoisseau();
     this.historiqueCereale = "";
     this.sim = true;
     this.simulation();
@@ -82,7 +82,7 @@ export class SARLBeuzelin{
   }
 
   getCamionCereale(index : number){
-    return this.camion[index].getCereale();
+    return this.camions[index].getCereale();
   }
 
   getFosseReception(index : number){
@@ -112,17 +112,17 @@ export class SARLBeuzelin{
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  public InitCamion(){
+  initCamion(){
     for(let i = 0; i < 2; i++)
-      this.camion[i] = new Camion();
+      this.camions[i] = new Camion();
   }
 
-  InitFosseReception(){
+  initFosseReception(){
     for(let i = 0; i < 2; i++)
       this.fossesReception[i] = new FosseReception();
   }
 
-  InitBoisseau(){
+  initBoisseau(){
     for(let i = 0; i < 3; i++)
       this.boisseauxChargement[i] = new BoisseauChargement();
   }
@@ -144,31 +144,21 @@ export class SARLBeuzelin{
     return temperatures;
   }
 
-  getCelluleByNum(numCellule){
-    for(let i=0; i<=this.silo.getCellules().length;i++){
-      if(this.silo.getCellules()[i].getNumeroCellule() == numCellule){
-        return this.silo.getCellules()[i].getNumeroCellule();
-      }else{
-        return null;
-      }
-    }
-  }
-
   async reception(){
     for(let i = 0; i < 2; i++)
     {
-      if(this.camion[i].isVide())
+      if(this.camions[i].isVide())
       {
-        this.camion[i].generationCereale();
-        this.camion[i].pesee();
-        this.camion[i].echantillonnage();
+        this.camions[i].generationCereale();
+        this.camions[i].pesee();
+        this.camions[i].echantillonnage();
         await this.delay(5000);
 
         for(let j = 0; j < 2; j++)
           if(this.fossesReception[j].isVide())
           {
-            if(!this.camion[i].isVide())
-              this.fossesReception[j].reception(this.camion[i].vidercamion());
+            if(!this.camions[i].isVide())
+              this.fossesReception[j].reception(this.camions[i].vidercamion());
           }
           await this.delay(2000);
       }

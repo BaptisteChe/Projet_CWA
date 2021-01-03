@@ -5,18 +5,18 @@ import { Qualite, Nom, Expedition, Element_Indesirable } from './enumeration';
 
 
 export class Cereale {
-    nom: Nom;
-    masse: number;
-    impurete: Impurete;
-    element_ind: Element_Indesirable;
-    tauxHumidite: number;
-    temperature : number;
-    qualite: Qualite;
-    triee: boolean;
-    nettoyee: boolean;
-    separee: boolean;
-    traitee: boolean;
-    expedition : Expedition;
+    private nom: Nom;
+    private masse: number;
+    private impurete: Impurete;
+    private element_ind: Element_Indesirable;
+    private tauxHumidite: number;
+    private temperature : number;
+    private qualite: Qualite;
+    private triee: boolean;
+    private nettoyee: boolean;
+    private separee: boolean;
+    private traitee: boolean;
+    private expedition : Expedition;
     histo : string;
 
     constructor(nom : Nom){
@@ -24,24 +24,108 @@ export class Cereale {
         this.histo = "";
     }
 
-/*
-    constructor(nom: Nom, masse: number, tauxHumidite: number, qualite: Qualite, impurete: Impurete, triee: boolean, nettoyee: boolean, separee: boolean, traitee: boolean) {
+    getNom(){
+        return this.nom;
+    }
+
+    setNom(nom: Nom){
         this.nom = nom;
+    }
+
+    getMasse(){
+        return this.masse;
+    }
+
+    setMasse(masse: number){
         this.masse = masse;
-        this.tauxHumidite = tauxHumidite;
-        this.qualite = qualite;
+    }
+
+    getImpurete(){
+        return this.impurete;
+    }
+
+    setImpurete(impurete: Impurete){
         this.impurete = impurete;
-        this.triee = triee;
-        this.nettoyee = nettoyee;
+    }
+
+    getElIndesirable(){
+        return this.element_ind;
+    }
+
+    setElIndesirable(indesirable: Element_Indesirable){
+        this.element_ind = indesirable;
+    }
+
+    getHumidite(){
+        return this.tauxHumidite;
+    }
+
+    setHumidite(humidite: number){
+        this.tauxHumidite = humidite;
+    }
+
+    getTemperature(){
+        return this.temperature;
+    }
+
+    setTemperature(temp: number){
+        this.temperature = temp;
+    }
+
+    getQualite(){
+        return this.qualite;
+    }
+
+    setQualite(qua: Qualite){
+        this.qualite = qua;
+    }
+
+    getTriee(){
+        return this.triee;
+    }
+
+    setTriee(trie: boolean){
+        this.triee = trie;
+    }
+
+    getNettoyee(){
+        return this.nettoyee;
+    }
+
+    setNettoye(net: boolean){
+        this.nettoyee = net;
+    }
+
+    getSeparee(){
+        return this.separee;
+    }
+
+    setSeparee(separee: boolean){
         this.separee = separee;
+    }
+
+    getTraitee(){
+        return this.traitee;
+    }
+
+    setTraitee(traitee: boolean){
         this.traitee = traitee;
     }
-*/
+
+    getExpedition(){
+        return this.expedition;
+    }
+
+    setExpedition(exp: Expedition){
+        this.expedition = exp;
+    }
+
+    getHisto(){
+        return this.histo;
+    }
+
+    setHisto(histo: string){
+        this.histo = histo;
+    }
+
 }
-
-
-
-/*export const CEREALES: Cereale[] = [
-    {nom: "Blé", masse: 42, tauxHumidité: 0.1, qualite: "Excellent"},
-    {nom: "Maïs", masse: 100, tauxHumidité: 0.1, qualite: "Médiocre"}
-];*/

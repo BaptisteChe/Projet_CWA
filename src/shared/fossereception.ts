@@ -16,7 +16,7 @@ export class FosseReception
     if(this.isVide())
       return Nom.Rien;
     else
-      return this.cereale.nom;
+      return this.cereale.getNom();
   }
 
 

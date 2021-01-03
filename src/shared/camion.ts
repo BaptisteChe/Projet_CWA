@@ -44,7 +44,7 @@ export class Camion
                 break;
         }
         this.cereale = new Cereale(nom);
-        this.cereale.histo = "Arrivée de "+this.cereale.nom.toString();
+        this.cereale.histo = "Arrivée de "+this.cereale.getNom().toString();
     }
 
     getRandomInt(min, max): number {
@@ -56,18 +56,18 @@ export class Camion
     pesee(){
         let alea;
         alea = this.getRandomInt(5, 17);
-        this.cereale.masse = alea;
-        this.cereale.histo += "\nPoid de la céréale : "+this.cereale.masse;
+        this.cereale.setMasse(alea);
+        this.cereale.histo += "\nPoid de la céréale : "+this.cereale.getMasse();
     }
 
     echantillonnage(){
         //Méthode de la génération de la Qualité, du taux d'humidité et des impuretés de la Céréale
         let alea;
         alea = this.getRandomInt(5, 50);
-        this.cereale.tauxHumidite = alea;
+        this.cereale.setHumidite(alea);
 
         alea = this.getRandomInt(30, 35);
-        this.cereale.temperature = alea;
+        this.cereale.setTemperature(alea);
 
         alea = this.getRandomInt(0, 5);
         let qualite : Qualite;
@@ -88,14 +88,14 @@ export class Camion
                 qualite = Qualite.premium;
                 break;
         }
-        this.cereale.qualite = qualite;
+        this.cereale.setQualite(qualite);
 
         let ge = Boolean(Math.round(Math.random()));
         let pi = Boolean(Math.round(Math.random()));
         let pel = Boolean(Math.round(Math.random()));
         let pin = Boolean(Math.round(Math.random()));
-        this.cereale.impurete = new Impurete(ge,pi,pel,pin);
-        this.cereale.histo += "\nEchantillonnage de la céréale : "+this.cereale.qualite.toString();
+        this.cereale.setImpurete(new Impurete(ge,pi,pel,pin));
+        this.cereale.histo += "\nEchantillonnage de la céréale : "+this.cereale.getQualite().toString();
     }
 
     vidercamion(){

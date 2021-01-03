@@ -54,7 +54,7 @@ export class NettoyeurSeparateur
     if(this.isVide())
       return Nom.Rien;
     else
-      return this.cerealesATraiter.nom;
+      return this.cerealesATraiter.getNom();
   }
 
 
@@ -72,17 +72,17 @@ export class NettoyeurSeparateur
   nettoyer()
   {
     if(!this.bourrageAlarme() && !this.isVide()){
-      this.cerealesATraiter.nettoyee = true;
-      this.cerealesATraiter.impurete.grosElements = false;
-      this.cerealesATraiter.impurete.poussieresInflammables = false;
-      this.cerealesATraiter.impurete.presenceElementsLegers = false;
+      this.cerealesATraiter.setNettoye(true);
+      this.cerealesATraiter.getImpurete().grosElements = false;
+      this.cerealesATraiter.getImpurete().poussieresInflammables = false;
+      this.cerealesATraiter.getImpurete().presenceElementsLegers = false;
     }
   }
 
   bourrageAlarme() : boolean
   {
     if(!this.isVide())
-      if(this.cerealesATraiter.masse > this.poids){
+      if(this.cerealesATraiter.getMasse() > this.poids){
         this.bourrage = true;
         this.alarme.setIsActive(true);
         this.alarme.setCause(CausesAlarme.bourrageNettoyeur);

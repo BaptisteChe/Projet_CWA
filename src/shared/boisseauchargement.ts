@@ -46,32 +46,19 @@ export class BoisseauChargement
       histo += this.cereale.histo+"\n---------------------------------------------------\n\n";
       this.cereale.histo = histo;
       console.log(this.cereale.histo);
-      //this.ecrireJSON(this.cereale);
       let c = this.cereale;
       this.cereale = null;
-
       return c;
   }
-/*
-  ecrireJSON(variable : Cereale){
-    
-    let val = JSON.parse(JSON.stringify(variable));
 
-    writeFile('historique.json',val,function(erreur){
-      if(erreur){
-        console.log(erreur);
-      }
-    });
-  }
-*/
   genererLieuExpedition() : Expedition
   {
     let nbr = Math.round(Math.random());
     if(nbr == 0){
-      this.cereale.expedition = Expedition.seine_Maritime;
+      this.cereale.setExpedition(Expedition.seine_Maritime);
     }else
-      this.cereale.expedition = Expedition.meunerie;
+      this.cereale.setExpedition(Expedition.meunerie);
 
-    return this.cereale.expedition;
+    return this.cereale.getExpedition();
   }
 }

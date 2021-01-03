@@ -39,13 +39,13 @@ export class Cellule
   majTemperature(){
     if(!this.isVide())
       for (let i = 0; i < 5; i++){
-        this.sondes[i].setTemperature(this.cereale.temperature);
+        this.sondes[i].setTemperature(this.cereale.getTemperature());
       }
   }
 
   ajoutCereale(cereale : Cereale){
     this.setCereale(cereale);
-    this.setPourcentage(((this.cereale.masse*1000)/120)/this.getVolume() *100);
+    this.setPourcentage(((this.cereale.getMasse()*1000)/120)/this.getVolume() *100);
     console.log(this.getPourcentage());
     this.cereale.histo += "\nCéréale stockée dans la cellule numéro : "+this.getNumeroCellule();
     console.log(this.cereale.histo);
@@ -103,7 +103,7 @@ export class Cellule
 
   injectionInsecticide(){
     console.log("INJECTION");
-    this.cereale.impurete.presenceInsectes = false;
+    this.cereale.getImpurete().presenceInsectes = false;
     this.cereale.histo += "\nCéréale traitée par insecticides";
   }
 
@@ -117,16 +117,16 @@ export class Cellule
     if(statut = true){
       if(!this.isVide())
       {  
-        while(this.cereale.temperature >= 15){
+        while(this.cereale.getTemperature() >= 15){
           this.ventilation = true;
-          this.cereale.temperature--;
+          this.cereale.setTemperature(this.cereale.getTemperature()-1);
           await this.delay(3000);
         }
         this.majTemperature();
       }
     }else{
       this.ventilation = false;
-      this.cereale.temperature++;
+      this.cereale.setTemperature(this.cereale.getTemperature()+1);
       await this.delay(1000);
     }
   }

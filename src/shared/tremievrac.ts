@@ -30,7 +30,7 @@ export class TremieVrac
     if(this.isVide())
       return Nom.Rien;
     else
-      return this.cerealesATraiter.nom;
+      return this.cerealesATraiter.getNom();
   }
 
   setBourrage(bourrage : boolean){
@@ -57,15 +57,15 @@ export class TremieVrac
   triage()
   {
     if(!this.bourrageAlarme() && !this.isVide){
-      this.cerealesATraiter.element_ind = Element_Indesirable.Clean;
-      this.cerealesATraiter.triee = true;
+      this.cerealesATraiter.setElIndesirable(Element_Indesirable.Clean);
+      this.cerealesATraiter.setTriee(true);
     }
   }
 
   bourrageAlarme() : boolean
   {
     if(!this.isVide())
-      if(this.cerealesATraiter.masse > this.poids){
+      if(this.cerealesATraiter.getMasse() > this.poids){
         this.bourrage = true;
         this.alarme.setIsActive(true);
         this.alarme.setCause(CausesAlarme.bourrageTremieVrac);
@@ -78,7 +78,7 @@ export class TremieVrac
   {
     if(!this.isVide())
     {
-      this.cerealesATraiter.histo += "\nCéréale Traitée par la Trémie-Vrac";
+      this.cerealesATraiter.setHisto(this.cerealesATraiter.getHisto()+"\nCéréale Traitée par la Trémie-Vrac");
       let c = this.cerealesATraiter;
       this.cerealesATraiter = null;
       return c;

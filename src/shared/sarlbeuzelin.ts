@@ -64,7 +64,7 @@ export class SARLBeuzelin{
   {
     if(this.silo != null)
       if(!this.silo.getCellule(index).isVide()){
-        let nom = this.silo.getCellule(index).getCereale().nom;
+        let nom = this.silo.getCellule(index).getCereale().getNom();
         switch(nom){
           case Nom.Ble :
             return 'primary';
@@ -201,7 +201,7 @@ export class SARLBeuzelin{
     for(let i = 0; i < 10; i++){
       if(!this.silo.getCellule(i).isVide())
         if(!this.silo.testpresenceInsecte(i))
-          if(this.silo.getCellule(i).getCereale().temperature <= 15)
+          if(this.silo.getCellule(i).getCereale().getTemperature() <= 15)
 
             for(let j = 0; j < 3; j++)
               if(this.boisseauxChargement[j].isVide())

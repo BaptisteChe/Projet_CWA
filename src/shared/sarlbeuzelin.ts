@@ -134,7 +134,8 @@ export class SARLBeuzelin{
       cel.getSondes().forEach(sonde => {
         temp.push(sonde.getTemperature());
         if(sonde.getTemperature() >= 15){
-          cel.setVentilation(true);
+          if(cel.getVentilation() == false)
+            cel.setVentilation(true);
         }else
           cel.setVentilation(false);
       });
@@ -152,17 +153,16 @@ export class SARLBeuzelin{
         this.camions[i].pesee();
         this.camions[i].echantillonnage();
         await this.delay(5000);
-
-        for(let j = 0; j < 2; j++)
-          if(this.fossesReception[j].isVide())
-          {
-            if(!this.camions[i].isVide())
-              this.fossesReception[j].reception(this.camions[i].vidercamion());
-          }
-          await this.delay(2000);
       }
+      for(let j = 0; j < 2; j++)
+        if(this.fossesReception[j].isVide())
+        {
+          if(!this.camions[i].isVide())
+            this.fossesReception[j].reception(this.camions[i].vidercamion());
+        }
+      await this.delay(5000);
     }
-    await this.delay(60000);
+    await this.delay(2000);
   }
 
   async traitement(){
@@ -182,17 +182,18 @@ export class SARLBeuzelin{
     {  
       this.nettoyeurSeparateur.remplirNettoyeurSeparateur(this.tremievrac.viderTremie());
       this.nettoyeurSeparateur.nettoyer();
-      await this.delay(2000);
     }
-    await this.delay(20000);
   }
 
   async stockage(){
     for(let i = 0; i < 10; i++){
+      await this.delay(3000);
       let numcell = this.silo.getCelluleIndex(i);
       if(numcell != null)
         if(!this.nettoyeurSeparateur.isVide())
+        {
           this.silo.ajoutCereale(this.nettoyeurSeparateur.viderNettoyeur(), i);
+        }
     }
   }
 
@@ -235,12 +236,17 @@ export class SARLBeuzelin{
   async maintenance(alarme : Alarme){
     if(alarme.getCause() == CausesAlarme.bourrageTremieVrac)
     {
-      await this.delay(30000);
+      await this.delay(10000);
       this.tremievrac.setBourrage(false);
       if(this.sim == false){
         this.sim = true;
         console.log("simulation relance");
-        this.simulation();
+        if(!this.nettoyeurSeparateur.getBourrage())
+          this.simulation();
+        else{
+          await this.delay(20000);
+          this.simulation();
+        }
       }
     }else{
       await this.delay(10000);
@@ -248,20 +254,24 @@ export class SARLBeuzelin{
       if(this.sim == false){
         this.sim = true;
         console.log("simulation relance");
-        this.simulation();
+        if(!this.tremievrac.getBourrage())
+          this.simulation();
+        else{
+          await this.delay(20000);
+          this.simulation();
+        }
       }
     }
   }
 
   async simulation(){
-    while(this.sim == true){
+    while(this.sim){
       this.reception();
       this.traitement();
       if(this.tremievrac.getAlarme().getIsActive())
       {
           this.sim = false;
           console.log("simulation pause")
-          alert(this.tremievrac.getAlarme().getCause().toString());
           this.maintenance(this.tremievrac.getAlarme());
       }
       else
@@ -271,7 +281,6 @@ export class SARLBeuzelin{
         {  
           this.sim = false;
           console.log("simulation pause")
-          alert(this.nettoyeurSeparateur.getAlarme().getCause().toString());
           this.maintenance(this.nettoyeurSeparateur.getAlarme());
         }
         else
@@ -281,7 +290,7 @@ export class SARLBeuzelin{
           this.expedition();
         }
       }
-      await this.delay(5000);
+      await this.delay(3000);
     }
   }
 

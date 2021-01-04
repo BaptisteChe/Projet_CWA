@@ -46,9 +46,8 @@ export class Cellule
   ajoutCereale(cereale : Cereale){
     this.setCereale(cereale);
     this.setPourcentage(((this.cereale.getMasse()*1000)/120)/this.getVolume() *100);
-    //console.log(this.getPourcentage());
+    this.majTemperature();
     this.cereale.histo += "\nCéréale stockée dans la cellule numéro : "+this.getNumeroCellule();
-    //console.log(this.cereale.histo);
   }
 
   getPourcentage(){
@@ -102,7 +101,6 @@ export class Cellule
   }
 
   injectionInsecticide(){
-    //console.log("INJECTION");
     this.cereale.getImpurete().setInsectes(false);
     this.cereale.histo += "\nCéréale traitée par insecticides";
   }
@@ -113,21 +111,22 @@ export class Cellule
   }
 
   async setVentilation(statut: boolean){
-    this.ventilation = statut;
-    if(statut = true){
+    if(statut == true){
       if(!this.isVide())
       {  
-        while(this.cereale.getTemperature() >= 15){
-          this.ventilation = true;
-          this.cereale.setTemperature(this.cereale.getTemperature()-1);
-          await this.delay(3000);
+        this.ventilation = true;
+        let temp = this.cereale.getTemperature();
+        while(temp >= 15){
+
+          if(!this.isVide()){
+            this.cereale.setTemperature(this.cereale.getTemperature()-1);
+            this.majTemperature();
+            temp--;
+          }
+          await this.delay(1000);
         }
-        this.majTemperature();
+        this.ventilation = false;
       }
-    }else{
-      this.ventilation = false;
-      this.cereale.setTemperature(this.cereale.getTemperature()+1);
-      await this.delay(1000);
     }
   }
 }

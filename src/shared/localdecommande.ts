@@ -39,7 +39,7 @@ export class LocalDeCommande
 
   async simulation(){
     while(true){
-      await this.delay(10000);
+      await this.delay(5000);
       this.checkTemperature();
       this.injection();
     }

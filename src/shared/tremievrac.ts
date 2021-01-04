@@ -33,6 +33,10 @@ export class TremieVrac
       return this.cerealesATraiter.getNom();
   }
 
+  getBourrage(){
+    return this.bourrage;
+  }
+
   setBourrage(bourrage : boolean){
     this.bourrage = bourrage;
     this.alarme.setIsActive(bourrage);

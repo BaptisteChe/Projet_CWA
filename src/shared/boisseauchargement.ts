@@ -51,7 +51,8 @@ export class BoisseauChargement
       let c = this.cereale;
       this.cereale = null;
       return c;
-    }
+    }else
+      return new Cereale(Nom.Rien);
   }
 
   genererLieuExpedition() : Expedition

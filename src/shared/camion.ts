@@ -99,7 +99,7 @@ export class Camion
     }
 
     vidercamion(){
-        console.log(this.cereale.histo);
+        //console.log(this.cereale.histo);
         let c = this.cereale;
         this.cereale = null;
         return c;

@@ -43,7 +43,7 @@ export class FosseReception
 
   expedition() : Cereale
   {
-    console.log(this.cereale.histo);
+    //console.log(this.cereale.histo);
     let c : Cereale = this.cereale;
     this.cereale = null;
     return c;

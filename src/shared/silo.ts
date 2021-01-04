@@ -51,7 +51,7 @@ export class Silo
   {
     let presence = false;
     if(!this.getCellule(index).isVide())
-      if(this.getCellule(index).getCereale().getImpurete().presenceInsectes)
+      if(this.getCellule(index).getCereale().getImpurete().getInsectes())
         presence = true;
     return presence;
   }

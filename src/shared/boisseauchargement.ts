@@ -40,15 +40,18 @@ export class BoisseauChargement
 
   expedition()
   {
+    if(!this.isVide())
+    {
       let histo = "---------------------------------------------------\n";
       //alert("Cereale de type : " + this.cereale.nom + "<br> poids : " + this.cereale.masse + "<br> taux d'humidite : " + this.cereale.tauxHumidite + "<br> qualite : " + this.cereale.qualite + "<br> details de l'expedition : " + this.cereale.detailsExpedition());
       this.cereale.histo += "\nCéréale chargée et au départ de : " + this.genererLieuExpedition();
       histo += this.cereale.histo+"\n---------------------------------------------------\n\n";
       this.cereale.histo = histo;
-      console.log(this.cereale.histo);
+      //console.log(this.cereale.histo);
       let c = this.cereale;
       this.cereale = null;
       return c;
+    }
   }
 
   genererLieuExpedition() : Expedition

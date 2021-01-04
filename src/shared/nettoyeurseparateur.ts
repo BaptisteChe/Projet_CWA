@@ -73,9 +73,9 @@ export class NettoyeurSeparateur
   {
     if(!this.bourrageAlarme() && !this.isVide()){
       this.cerealesATraiter.setNettoye(true);
-      this.cerealesATraiter.getImpurete().grosElements = false;
-      this.cerealesATraiter.getImpurete().poussieresInflammables = false;
-      this.cerealesATraiter.getImpurete().presenceElementsLegers = false;
+      this.cerealesATraiter.getImpurete().setGrosElem(false);
+      this.cerealesATraiter.getImpurete().setPoussInflam(false);
+      this.cerealesATraiter.getImpurete().setElemLegers(false);
     }
   }
 

@@ -1,9 +1,9 @@
 export class Impurete{
 
-    grosElements: boolean;
-    poussieresInflammables: boolean;
-    presenceElementsLegers: boolean;
-    presenceInsectes: boolean;
+    private grosElements: boolean;
+    private poussieresInflammables: boolean;
+    private presenceElementsLegers: boolean;
+    private presenceInsectes: boolean;
 
     constructor(grosElements:boolean, poussieresInflammables:boolean, presenceElementsLegers:boolean, presenceInsectes:boolean){
         this.grosElements = grosElements;
@@ -12,4 +12,35 @@ export class Impurete{
         this.presenceInsectes = presenceInsectes;
     }
 
+    getGrosElem(){
+        return this.grosElements;
+    }
+
+    setGrosElem(elem: boolean){
+        this.grosElements = elem;
+    }
+
+    getPoussInflam(){
+        return this.poussieresInflammables;
+    }
+
+    setPoussInflam(poussInflam){
+        this.poussieresInflammables = poussInflam;
+    }
+
+    getElemLegers(){
+        return this.presenceElementsLegers;
+    }
+
+    setElemLegers(elemLeger){
+        this.presenceElementsLegers = elemLeger;
+    }
+
+    getInsectes(){
+        return this.presenceInsectes;
+    }
+
+    setInsectes(insecte: boolean){
+        this.presenceInsectes = insecte;
+    }
 }

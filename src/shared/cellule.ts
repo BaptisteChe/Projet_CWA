@@ -46,9 +46,9 @@ export class Cellule
   ajoutCereale(cereale : Cereale){
     this.setCereale(cereale);
     this.setPourcentage(((this.cereale.getMasse()*1000)/120)/this.getVolume() *100);
-    console.log(this.getPourcentage());
+    //console.log(this.getPourcentage());
     this.cereale.histo += "\nCéréale stockée dans la cellule numéro : "+this.getNumeroCellule();
-    console.log(this.cereale.histo);
+    //console.log(this.cereale.histo);
   }
 
   getPourcentage(){
@@ -102,8 +102,8 @@ export class Cellule
   }
 
   injectionInsecticide(){
-    console.log("INJECTION");
-    this.cereale.getImpurete().presenceInsectes = false;
+    //console.log("INJECTION");
+    this.cereale.getImpurete().setInsectes(false);
     this.cereale.histo += "\nCéréale traitée par insecticides";
   }
 

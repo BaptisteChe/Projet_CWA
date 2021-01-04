@@ -1,5 +1,5 @@
 import { Cereale } from './cereale';
-import { Nom, Qualite, } from './enumeration';
+import { Nom, Qualite } from './enumeration';
 import { Impurete } from './impurete';
 
 export class Camion

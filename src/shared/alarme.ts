@@ -1,6 +1,7 @@
 import { CausesAlarme } from './enumeration';
 
 export class Alarme{
+    
     private isActive: boolean;
     private cause: CausesAlarme;
 

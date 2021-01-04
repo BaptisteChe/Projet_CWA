@@ -1,6 +1,4 @@
 import { Impurete } from './impurete';
-import { NettoyeurSeparateur } from './nettoyeurseparateur';
-import { TremieVrac } from './tremievrac';
 import { Qualite, Nom, Expedition, Element_Indesirable } from './enumeration';
 
 

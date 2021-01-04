@@ -160,9 +160,9 @@ export class SARLBeuzelin{
           if(!this.camions[i].isVide())
             this.fossesReception[j].reception(this.camions[i].vidercamion());
         }
-      await this.delay(5000);
+      await this.delay(20000);
     }
-    await this.delay(2000);
+    await this.delay(5000);
   }
 
   async traitement(){
@@ -170,29 +170,34 @@ export class SARLBeuzelin{
       if(!this.fossesReception[i].isVide())
         if(this.tremievrac.isVide())
         {
+          await this.delay(5000);
           this.tremievrac.remplirTremie(this.fossesReception[i].expedition());
           this.tremievrac.triage();
         }
-      await this.delay(20000);
     }
   }
 
   async nettoyage(){;
     if(this.nettoyeurSeparateur.isVide())
-    {  
-      this.nettoyeurSeparateur.remplirNettoyeurSeparateur(this.tremievrac.viderTremie());
-      this.nettoyeurSeparateur.nettoyer();
+    { 
+      if(!this.tremievrac.isVide()){
+          if(!this.tremievrac.getBourrage()){
+            this.nettoyeurSeparateur.remplirNettoyeurSeparateur(this.tremievrac.viderTremie());
+            this.nettoyeurSeparateur.nettoyer();
+          }
+      }
     }
   }
 
   async stockage(){
     for(let i = 0; i < 10; i++){
-      await this.delay(3000);
       let numcell = this.silo.getCelluleIndex(i);
+      await this.delay(10000);
       if(numcell != null)
         if(!this.nettoyeurSeparateur.isVide())
         {
-          this.silo.ajoutCereale(this.nettoyeurSeparateur.viderNettoyeur(), i);
+          if(!this.nettoyeurSeparateur.getBourrage())
+            this.silo.ajoutCereale(this.nettoyeurSeparateur.viderNettoyeur(), i);
         }
     }
   }

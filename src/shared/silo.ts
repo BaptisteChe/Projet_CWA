@@ -3,13 +3,14 @@ import { Cereale } from './cereale';
 
 export class Silo
 {
-  private cellules : Cellule[] = [];
+  private cellules : Cellule[];
   /*A tester et à ajouter dans le diag de classe*/ 
 
 //CONSTRUCTEUR
 
   constructor()
   {
+    this.cellules = [];
     for(let i = 0; i < 10; i++){
       this.cellules[i] = new Cellule(i,137);  
     }

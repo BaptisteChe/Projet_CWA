@@ -3,6 +3,7 @@ import { Expedition, Nom } from './enumeration';
 
 export class BoisseauChargement
 {
+//VARIABLES
   private cereale : Cereale;
 
 //CONSTRUCTEUR
@@ -14,11 +15,25 @@ export class BoisseauChargement
 
 //ACCESSEURS
 
+    //Methode renvoyant un booleen informant si le boisseau est vide
+  isVide()
+  {
+      //Verifie si la variable cereale est null
+    if(this.cereale == null)
+      return true;
+    else{
+      return false;
+    }
+  }
+
   getCereale()
   {
+    //Verifie si le boisseau n est pas vide
     if(!this.isVide())
+      //Si oui retourne la variable cereale
       return this.cereale;
     else
+      //Si non retourne une instance de cereale nom parametree
       return new Cereale(Nom.Rien);
   }
 
@@ -27,34 +42,10 @@ export class BoisseauChargement
     this.cereale = cereale;
   }
 
-  isVide()
-  {
-    if(this.cereale == null)
-      return true;
-    else{
-      return false;
-    }
-  }
 
 //FONCTIONS
 
-  expedition()
-  {
-    if(!this.isVide())
-    {
-      let histo = "---------------------------------------------------\n";
-      //alert("Cereale de type : " + this.cereale.nom + "<br> poids : " + this.cereale.masse + "<br> taux d'humidite : " + this.cereale.tauxHumidite + "<br> qualite : " + this.cereale.qualite + "<br> details de l'expedition : " + this.cereale.detailsExpedition());
-      this.cereale.histo += "\nCéréale chargée et au départ de : " + this.genererLieuExpedition();
-      histo += this.cereale.histo+"\n---------------------------------------------------\n\n";
-      this.cereale.histo = histo;
-      //console.log(this.cereale.histo);
-      let c = this.cereale;
-      this.cereale = null;
-      return c;
-    }else
-      return new Cereale(Nom.Rien);
-  }
-
+  //Methode de generation d un lieu d expedition affectee a une des variables de la cereale et renvoyant ce lieu
   genererLieuExpedition() : Expedition
   {
     let nbr = Math.round(Math.random());
@@ -64,5 +55,29 @@ export class BoisseauChargement
       this.cereale.setExpedition(Expedition.meunerie);
 
     return this.cereale.getExpedition();
+  }
+
+  //Methode renvoyant la variable cereale si le boisseau n est pas vide avec sa variable histo modifiee
+  expedition()
+  {
+    //Verifie si le boisseau n est pas vide
+    if(!this.isVide())
+    {
+      //Affectation a une nouvelle variable des caracteres suivants
+      let histo = "---------------------------------------------------\n";
+      //Ajout du lieu d expedition a l historique de la cereale en la generant en appelant la methode generationLieuExpedition
+      this.cereale.histo += "\nCéréale chargée et au départ de : " + this.genererLieuExpedition();
+      histo += this.cereale.histo+"\n---------------------------------------------------\n\n";
+      //Affectation de la nouvelle variable a lhistorique de la cereale
+      this.cereale.histo = histo;
+      //Clonage de la cereale
+      let c = this.cereale;
+      //On ecrase la variable cereale 
+      this.cereale = null;
+      //On renvoie le clone
+      return c;
+    }else
+      //Sinon on renvoie une nouvelle instance de cereale non parametree
+      return new Cereale(Nom.Rien);
   }
 }

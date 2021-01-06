@@ -2,14 +2,16 @@ import { CausesAlarme } from './enumeration';
 
 export class Alarme{
     
+//VARIABLES
     private isActive: boolean;
     private cause: CausesAlarme;
 
+//CONSTRUCTEUR
     constructor(){
         this.isActive = false;
-        this.cause = null;
     }
 
+//ACCESSEURS
     setIsActive(active : boolean){
         this.isActive = active;
     }

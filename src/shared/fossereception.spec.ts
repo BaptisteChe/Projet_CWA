@@ -1,36 +1,34 @@
 import { Cereale } from './cereale';
+import { Nom } from './enumeration';
 import { FosseReception } from './fossereception';
-import { Nom, Qualite, } from './enumeration';
 
-describe('fosse de reception', () => {
+describe('Fosse de reception', () => {
     let frecep: FosseReception ;
-    let cereale: Cereale;
+    let c : Cereale;
 
     beforeEach(() => {
         frecep = new FosseReception();
-        cereale = new Cereale(Nom.Ble);
+        c = new Cereale(Nom.Ble);
     });
 
     afterEach(() => {
         frecep = null;
-        cereale = null;
+        c = null;
     });
 
-    it('test fosse vide', () => {
+    it('Doit être vide ', () => {
         expect(frecep.isVide()).toBeTruthy();
     });
 
-    it('test fosse pleine', () => {
-        frecep.reception(cereale);
-        expect(frecep.isVide()).toBeFalsy();
-    })
-
-    it('test expedition ', () => {
-        frecep.reception(cereale);
-        expect(frecep.expedition()).toBe(cereale);
+    it('Reception d une cereale : ', () => {
+        frecep.reception(c);
+        expect(frecep.getCereale()).not.toBeUndefined();
     });
 
-    it('test reception ', () => {
-        expect(frecep.reception(cereale));
+    it('Expedition d une creale : ', () => {
+        frecep.reception(c);
+        let c2 = frecep.expedition();
+        expect(c).toEqual(c2);
+        expect(frecep.getCereale()).toBeNull();
     });
 });

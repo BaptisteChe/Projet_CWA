@@ -52,9 +52,9 @@ export class NettoyeurSeparateur
 
   getCereale(){
     if(this.isVide())
-      return Nom.Rien;
+      return new Cereale(Nom.Rien);
     else
-      return this.cerealesATraiter.getNom();
+      return this.cerealesATraiter;
   }
 
 

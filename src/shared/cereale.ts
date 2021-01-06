@@ -19,7 +19,7 @@ export class Cereale {
 
     constructor(nom : Nom){
         this.nom = nom;
-        this.histo = "";
+        this.histo = "Rien";
     }
 
     getNom(){

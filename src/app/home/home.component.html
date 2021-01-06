@@ -9,7 +9,7 @@
                   <mat-card-title>Camion n°1</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>                 
-                  <p style="white-space: pre-wrap;">{{sarl.getCamionCereale(0)}}</p>
+                  <p style="white-space: pre-wrap;">{{sarl.getCamionCereale(0).histo}}</p>
                 </mat-card-content>
               </mat-card>
 
@@ -18,7 +18,7 @@
                   <mat-card-title>Camion n°2</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
-                  <p style="white-space: pre-wrap;">{{sarl.getCamionCereale(1)}}</p>
+                  <p style="white-space: pre-wrap;">{{sarl.getCamionCereale(1).histo}}</p>
                 </mat-card-content>
               </mat-card>
               </div>
@@ -30,7 +30,7 @@
                 </mat-card-header>
                 <p style="text-align: center;">Vers la Trémie <br></p>
                 <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: 75px; margin-right: auto; transform: rotate(30deg);">
-                <p style="text-align: center;">Céréale en attente :{{sarl.getFosseReception(0)}}</p>
+                <p style="text-align: center;">Céréale en attente :{{sarl.getFosseReception(0).getNom()}}</p>
               </mat-card>
 
               <mat-card class="Fleche1" style="margin-top: 25px; margin-left: 70px;height: 120px;">
@@ -39,7 +39,7 @@
                 </mat-card-header>
                 <p style="text-align: center;">Vers la Trémie <br></p>
                 <img mat-card-image  alt="yellowarrow2" src="../../assets/flecheJaune.png" style="width: 60px; margin-left: 75px; margin-right: auto; transform: rotate(340deg);">
-                <p style="text-align: center;">Céréale en attente :{{sarl.getFosseReception(1)}}</p>
+                <p style="text-align: center;">Céréale en attente :{{sarl.getFosseReception(1).getNom()}}</p>
               </mat-card>
               </div>
             <div>
@@ -49,7 +49,7 @@
                 </mat-card-header>
                 <mat-card-content>
                   <p>
-                    Type de Céréale : {{sarl.getTremie().getCereale().toString()}}<br>
+                    Type de Céréale : {{sarl.getTremie().getCereale().getNom().toString()}}<br>
                     Bourrage : <br>
                     <ng-template [ngIf]="sarl.getTremie().getAlarme().getIsActive()" [ngIfThen]="ActiveeT" [ngIfElse]="EteinteT">
                     </ng-template>
@@ -81,7 +81,7 @@
                 </mat-card-header>
                 <mat-card-content>
                   <p>
-                    Type de Céréale : {{sarl.getNettoyeur().getCereale().toString()}}<br>
+                    Type de Céréale : {{sarl.getNettoyeur().getCereale().getNom().toString()}}<br>
                     Bourrage : <br>
                     
                     <ng-template [ngIf]="sarl.getNettoyeur().getAlarme().getIsActive()" [ngIfThen]="ActiveeN" [ngIfElse]="EteinteN">
@@ -173,7 +173,7 @@
                       <mat-card-title>Boisseau n°1</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>                 
-                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(0).getCereale()}}</p>
+                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(0).getCereale().histo}}</p>
                     </mat-card-content>
                   </mat-card>
     
@@ -182,7 +182,7 @@
                       <mat-card-title>Boisseau n°2</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
-                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(1).getCereale()}}</p>
+                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(1).getCereale().histo}}</p>
                     </mat-card-content>
                   </mat-card>
 
@@ -191,7 +191,7 @@
                       <mat-card-title>Boisseau n°3</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
-                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(2).getCereale()}}</p>
+                      <p style="white-space: pre-wrap;">{{sarl.getBoisseau(2).getCereale().histo}}</p>
                     </mat-card-content>
                   </mat-card>
               </div>

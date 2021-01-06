@@ -96,12 +96,18 @@ export class SARLBeuzelin{
 
   /* Retourne la cereale contenu dans un camion */
   getCamionCereale(index : number){
-    return this.camions[index].getCereale();
+    if(!this.camions[index].isVide())
+      return this.camions[index].getCereale();
+    else
+      return new Cereale(Nom.Rien);
   }
 
   /* Retourne la cereale d'une fosse de reception */
   getFosseReception(index : number){
-    return this.fossesReception[index].getCereale();
+    if(!this.fossesReception[index].isVide())
+      return this.fossesReception[index].getCereale();
+    else 
+      return new Cereale(Nom.Rien);
   }
 
   /* Retourne la Tremie */
@@ -336,7 +342,7 @@ export class SARLBeuzelin{
       if(this.sim == false){
         //On passe la variable a active
         this.sim = true;
-        console.log("simulation relance");
+
         //Verifie si le nettoyeur n est pas en bourrage
         if(!this.nettoyeurSeparateur.getBourrage())
           //On relance la simulation
@@ -351,7 +357,7 @@ export class SARLBeuzelin{
       if(this.sim == false){
         //On passe la variable a active
         this.sim = true;
-        console.log("simulation relance");
+
         //Verifie si la tremie n est pas en bourrage
         if(!this.tremievrac.getBourrage())
           //On relance la simulation
@@ -373,7 +379,6 @@ export class SARLBeuzelin{
       {
           //On passe la variable de simulation en n est pas active
           this.sim = false;
-          console.log("simulation pause");
           //On appel la maintenance
           this.maintenance(this.tremievrac.getAlarme());
       }
@@ -386,7 +391,6 @@ export class SARLBeuzelin{
         {  
           //On passe la variable de simulation en n est pas active
           this.sim = false;
-          console.log("simulation pause");
           //On appel la maintenance
           this.maintenance(this.nettoyeurSeparateur.getAlarme());
         }

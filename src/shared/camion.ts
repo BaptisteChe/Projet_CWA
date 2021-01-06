@@ -10,11 +10,9 @@ export class Camion
         this.cereale = null;
     }
 
-    getCereale(){
-        if(this.isVide())
-            return Nom.Rien.toString();
-        else
-            return this.cereale.histo;
+    getCereale() : Cereale
+    {
+        return this.cereale;
     }
     
     isVide(){

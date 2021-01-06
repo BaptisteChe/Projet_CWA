@@ -21,16 +21,17 @@ export class TremieVrac
   }
 
 //Accesseur
+  
+  getCereale(){
+    if(this.isVide())
+      return new Cereale(Nom.Rien);
+    else
+      return this.cerealesATraiter;
+  }
+
   getAlarme()
   {
     return this.alarme;
-  }
-
-  getCereale(){
-    if(this.isVide())
-      return Nom.Rien;
-    else
-      return this.cerealesATraiter.getNom();
   }
 
   getBourrage(){
@@ -60,7 +61,7 @@ export class TremieVrac
   
   triage()
   {
-    if(!this.bourrageAlarme() && !this.isVide){
+    if(!this.bourrageAlarme() && !this.isVide()){
       this.cerealesATraiter.setElIndesirable(Element_Indesirable.Clean);
       this.cerealesATraiter.setTriee(true);
     }

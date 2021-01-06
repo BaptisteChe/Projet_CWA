@@ -17,9 +17,9 @@ export class BoisseauChargement
   getCereale()
   {
     if(!this.isVide())
-      return this.cereale.histo;
+      return this.cereale;
     else
-      return Nom.Rien.toString();
+      return new Cereale(Nom.Rien);
   }
 
   setCereale(cereale : Cereale )

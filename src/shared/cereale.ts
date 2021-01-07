@@ -1,8 +1,11 @@
 import { Impurete } from './impurete';
 import { Qualite, Nom, Expedition, Element_Indesirable } from './enumeration';
 
+/* Objet cle pour le fonctionnement de la SARL BEUZELIN */
 
-export class Cereale {
+export class Cereale 
+{
+//VARIABLES
     private nom: Nom;
     private masse: number;
     private impurete: Impurete;
@@ -17,84 +20,105 @@ export class Cereale {
     private expedition : Expedition;
     histo : string;
 
+//CONSTRUCTEUR
     constructor(nom : Nom){
         this.nom = nom;
         this.histo = "Rien";
     }
 
-    getNom(){
+//ACCESSEURS
+    getNom() : Nom
+    {
         return this.nom;
     }
 
-    setNom(nom: Nom){
+    setNom(nom: Nom)
+    {
         this.nom = nom;
     }
 
-    getMasse(){
+    getMasse() : number
+    {
         return this.masse;
     }
 
-    setMasse(masse: number){
+    setMasse(masse: number)
+    {
         this.masse = masse;
     }
 
-    getImpurete(){
+    getImpurete() : Impurete
+    {
         return this.impurete;
     }
 
-    setImpurete(impurete: Impurete){
+    setImpurete(impurete: Impurete)
+    {
         this.impurete = impurete;
     }
 
-    getElIndesirable(){
+    getElIndesirable() : Element_Indesirable
+    {
         return this.element_ind;
     }
 
-    setElIndesirable(indesirable: Element_Indesirable){
+    setElIndesirable(indesirable: Element_Indesirable)
+    {
         this.element_ind = indesirable;
     }
 
-    getHumidite(){
+    getHumidite() : number
+    {
         return this.tauxHumidite;
     }
 
-    setHumidite(humidite: number){
+    setHumidite(humidite: number)
+    {
         this.tauxHumidite = humidite;
     }
 
-    getTemperature(){
+    getTemperature() : number
+    {
         return this.temperature;
     }
 
-    setTemperature(temp: number){
+    setTemperature(temp: number)
+    {
         this.temperature = temp;
     }
 
-    getQualite(){
+    getQualite() : Qualite
+    {
         return this.qualite;
     }
 
-    setQualite(qua: Qualite){
+    setQualite(qua: Qualite)
+    {
         this.qualite = qua;
     }
 
-    getTriee(){
+    getTriee() : boolean
+    {
         return this.triee;
     }
 
-    setTriee(trie: boolean){
+    setTriee(trie: boolean)
+    {
         this.triee = trie;
     }
 
-    getNettoyee(){
+    getNettoyee() : boolean
+    {
         return this.nettoyee;
     }
 
-    setNettoye(net: boolean){
+    setNettoye(net: boolean)
+    {
         this.nettoyee = net;
     }
 
-    getSeparee(){
+    getSeparee() : boolean
+    {
         return this.separee;
     }
 
@@ -102,7 +126,8 @@ export class Cereale {
         this.separee = separee;
     }
 
-    getTraitee(){
+    getTraitee() : boolean
+    {
         return this.traitee;
     }
 
@@ -110,15 +135,18 @@ export class Cereale {
         this.traitee = traitee;
     }
 
-    getExpedition(){
+    getExpedition() : Expedition
+    {
         return this.expedition;
     }
 
-    setExpedition(exp: Expedition){
+    setExpedition(exp: Expedition)
+    {
         this.expedition = exp;
     }
 
-    getHisto(){
+    getHisto() : string
+    {
         return this.histo;
     }
 

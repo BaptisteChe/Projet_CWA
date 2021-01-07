@@ -25,7 +25,7 @@ describe('Fosse de reception', () => {
         expect(frecep.getCereale()).not.toBeUndefined();
     });
 
-    it('Expedition d une creale : ', () => {
+    it('Expedition d une cereale : ', () => {
         frecep.reception(c);
         let c2 = frecep.expedition();
         expect(c).toEqual(c2);

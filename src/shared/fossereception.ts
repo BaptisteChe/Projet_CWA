@@ -1,4 +1,5 @@
 import { Cereale } from './cereale';
+import { Nom } from './enumeration';
 
 export class FosseReception
 {
@@ -11,38 +12,45 @@ export class FosseReception
     this.cereale = null;
   }
 
-  getCereale() : Cereale
+//ACCESSEURS
+
+  //Methode renvoyant un booleen informant si le boisseau est vide
+  isVide() : boolean
   {
-    return this.cereale;
-  }
-
-
-//FONCTIONS
-
-  //Test si la fosse est vide ou non
-  isVide()
-  {
+    //Verifie si la variable cereale est null
     if(this.cereale == null)
       return true;
     else
       return false;
   }
 
+  getCereale() : Cereale
+  {
+    return this.cereale;
+  }
+
+//FONCTIONS
+
+  /* Methode de reception d une instance de Cereale et affectation de celle-ci a la variable cereale */
   reception(cereale : Cereale ) 
   {
+    //Verifie si la fosse est vide
     if(this.isVide()){
+      //On affecte la variable passee en parametre a cereale
       this.cereale = cereale;
-      this.cereale.histo += "\nPassée dans la Fosse";
-    }else{
-      console.error("La Fosse a déjà une céréale !")
     }
   }
 
+  /* Methode renvoyant la variable cereale */
   expedition() : Cereale
   {
-    //console.log(this.cereale.histo);
+    //On affecte une nouvelle donnee a histo de cereale
+    this.cereale.histo += "\nPassée dans la Fosse";
+    //Clonage de la cereale
     let c : Cereale = this.cereale;
+    //On ecrase la variable cereale 
     this.cereale = null;
+    //On renvoie le clone
     return c;
   }
 

@@ -7,24 +7,29 @@ export class Alarme{
     private cause: CausesAlarme;
 
 //CONSTRUCTEUR
-    constructor(){
+    constructor()
+    {
         this.isActive = false;
     }
 
 //ACCESSEURS
-    setIsActive(active : boolean){
+    setIsActive(active : boolean)
+    {
         this.isActive = active;
     }
 
-    setCause(cause : CausesAlarme){
+    setCause(cause : CausesAlarme)
+    {
         this.cause = cause;
     }
     
-    getIsActive() : boolean{
+    getIsActive() : boolean
+    {
         return this.isActive;
     }
 
-    getCause() : CausesAlarme{
+    getCause() : CausesAlarme
+    {
         return this.cause;
     }
 }

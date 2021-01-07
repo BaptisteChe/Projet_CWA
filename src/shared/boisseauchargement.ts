@@ -15,10 +15,10 @@ export class BoisseauChargement
 
 //ACCESSEURS
 
-    //Methode renvoyant un booleen informant si le boisseau est vide
-  isVide()
+  //Methode renvoyant un booleen informant si le boisseau est vide
+  isVide() : boolean
   {
-      //Verifie si la variable cereale est null
+    //Verifie si la variable cereale est null
     if(this.cereale == null)
       return true;
     else{
@@ -26,7 +26,7 @@ export class BoisseauChargement
     }
   }
 
-  getCereale()
+  getCereale() : Cereale
   {
     //Verifie si le boisseau n est pas vide
     if(!this.isVide())
@@ -58,7 +58,7 @@ export class BoisseauChargement
   }
 
   //Methode renvoyant la variable cereale si le boisseau n est pas vide avec sa variable histo modifiee
-  expedition()
+  expedition() : Cereale
   {
     //Verifie si le boisseau n est pas vide
     if(!this.isVide())
@@ -71,7 +71,7 @@ export class BoisseauChargement
       //Affectation de la nouvelle variable a lhistorique de la cereale
       this.cereale.histo = histo;
       //Clonage de la cereale
-      let c = this.cereale;
+      let c : Cereale = this.cereale;
       //On ecrase la variable cereale 
       this.cereale = null;
       //On renvoie le clone

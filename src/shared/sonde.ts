@@ -1,5 +1,9 @@
+
+/* Sonde d une instance de Cellule renvoyant et stockant la temperature d une instance de Cereale */
+
 export class Sonde
 {
+//VARIABLES
   private temperature : number;
 
 //CONSTRUCTEUR
@@ -11,7 +15,7 @@ export class Sonde
 
 //ACCESSEURS
 
-  getTemperature()
+  getTemperature() : number
   {
     return this.temperature;
   }

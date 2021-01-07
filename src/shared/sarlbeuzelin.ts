@@ -56,12 +56,14 @@ export class SARLBeuzelin{
 //ACCESSEURS
 
   /* Retourne le niveau de remplissage d une cellule */
-  getRemplissage(index : number){
+  getRemplissage(index : number) : number
+  {
     return this.silo.getCellule(index).getPourcentage();
   }
 
   /* Retourne une cereale stockee d une Cellule */ 
-  getSiloCereale(index : number){
+  getSiloCereale(index : number) : Cereale
+  {
     if(!this.silo.getCellule(index).isVide())
       return this.silo.getCellule(index).getCereale();
     else
@@ -69,7 +71,8 @@ export class SARLBeuzelin{
   }
 
   /* Retourne le Silo */
-  getSilo(){
+  getSilo() : Silo
+  {
     return this.silo;
   }
 
@@ -95,7 +98,8 @@ export class SARLBeuzelin{
   }
 
   /* Retourne la cereale contenu dans un camion */
-  getCamionCereale(index : number){
+  getCamionCereale(index : number) : Cereale
+  {
     if(!this.camions[index].isVide())
       return this.camions[index].getCereale();
     else
@@ -103,7 +107,8 @@ export class SARLBeuzelin{
   }
 
   /* Retourne la cereale d'une fosse de reception */
-  getFosseReception(index : number){
+  getFosseReception(index : number) : Cereale
+  {
     if(!this.fossesReception[index].isVide())
       return this.fossesReception[index].getCereale();
     else 
@@ -111,22 +116,26 @@ export class SARLBeuzelin{
   }
 
   /* Retourne la Tremie */
-  getTremie(){
+  getTremie() : TremieVrac
+  {
     return this.tremievrac;
   }
 
   /* Retourne le Nettoyeur*/
-  getNettoyeur(){
+  getNettoyeur() : NettoyeurSeparateur
+  {
     return this.nettoyeurSeparateur;
   }
 
   /* Retourne un des Boisseaux de chargement */
-  getBoisseau(index : number){
+  getBoisseau(index : number) : BoisseauChargement
+  {
     return this.boisseauxChargement[index];
   }
 
   /* Retourne la variable historique */
-  getHistoriqueCereale(){
+  getHistoriqueCereale() : string
+  {
     if(this.historiqueCereale != null)
       return this.historiqueCereale;
   }
@@ -134,19 +143,22 @@ export class SARLBeuzelin{
 //FONCTIONS
 
   /* Retourne un temps d'attente en Millisecondes */
-  delay(ms: number) {
+  delay(ms: number) 
+  {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   /* Initialise la liste de camions a 2 camions */
-  initCamion(){
+  initCamion()
+  {
     this.camions = [];
     for(let i = 0; i < 2; i++)
       this.camions[i] = new Camion();
   }
 
   /* Initialise la liste de fosses de reception a 2 fosses de reception */
-  initFosseReception(){
+  initFosseReception()
+  {
     this.fossesReception = [];
     for(let i = 0; i < 2; i++)
       this.fossesReception[i] = new FosseReception();
@@ -162,7 +174,8 @@ export class SARLBeuzelin{
 //METHODE UTILISEES PAR LA SIMULATION DU LOCAL DE COMMANDE
 
   /* Verifie la temperature de chaque sonde de chaque cellule afin d activer ou non la ventilation de la cellule */
-  checkTempCellule(): number[][]{
+  checkTempCellule(): number[][]
+  {
     let temperatures: number[][] = [[]];
     let temp: number[] = [];
 
@@ -197,7 +210,8 @@ export class SARLBeuzelin{
   /* Les diverses fonctions qui suivent sont async afin de pouvoir synchroniser chaque processus issu des fonctionnalites de la SARL BEUZELIN durant la simulation. */
 
   /* Methode demandant aux camions de generer, si possible, une nouvelle cereale et de vider, si possible, son contenu dans une des fosses de reception */
-  async reception(){
+  async reception()
+  {
     //On parcourt la liste de camions
     for(let i = 0; i < 2; i++)
     {
@@ -230,7 +244,8 @@ export class SARLBeuzelin{
   }
 
   /* Methode demandant aux fosses, si possible, de se vider dans la Tremie */
-  async traitement(){
+  async traitement()
+  {
     //On parcourt la liste des fosses de reception
     for(let i = 0; i < 2; i++){
       //Verifie si la fosse n est pas vide
@@ -247,7 +262,8 @@ export class SARLBeuzelin{
   }
 
   /* Methode demandant a la Tremie, si possible, de se vider dans le Nettoyeur */
-  async nettoyage(){
+  async nettoyage()
+  {
     //Verifie si le nettoyeur est vide
     if(this.nettoyeurSeparateur.isVide())
     { 
@@ -266,7 +282,8 @@ export class SARLBeuzelin{
   }
 
   /* Methode cherchant a stocker, si possible, le contenu du Nettoyeur dans une Cellule du Silo */
-  async stockage(){
+  async stockage()
+  {
     //On parcourt la liste des cellules du Silo
     for(let i = 0; i < this.silo.getCellules().length; i++){
       //On affecte a la variable la cellule 
@@ -285,7 +302,8 @@ export class SARLBeuzelin{
   }
 
   /* Methode passant le contenu d une cellule dans un des boisseaux de chargement si possible */
-  async preparationExpedition(){
+  async preparationExpedition()
+  {
     //On met en pause la methode durant 10 secondes 
     await this.delay(10000);
     //On parcourt la liste des cellules du Silo
@@ -314,7 +332,8 @@ export class SARLBeuzelin{
   }
 
   /* Methode vidant les boisseaux de chargement et recuperant l historique du lot de cereales dans une variable globale */
-  async expedition(){
+  async expedition()
+  {
     //On parcourt la liste des boisseaux de chargement
     for(let i = 0; i < 3; i++){
       //Verifie si le boisseau n est pas vide
@@ -368,7 +387,7 @@ export class SARLBeuzelin{
 
   /* Methode Globale appellant toutes les fonctions representant la simulation des fonctionnalites de la SARL BEUZELIN */
   async simulation(){
-    //Boucle vérifiant si la variable de simulation est active
+    //Boucle verifiant si la variable de simulation est active
     while(this.sim){
 
       this.reception(); 
@@ -401,7 +420,7 @@ export class SARLBeuzelin{
           this.expedition();
         }
       }
-      //On met en pause la simulation
+      //On met en pause la simulation durant 5 secondes
       await this.delay(5000);
     }
   }

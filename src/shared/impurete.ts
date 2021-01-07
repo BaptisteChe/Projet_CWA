@@ -1,10 +1,14 @@
-export class Impurete{
+/* Objet representant les impuretes d une Cereale */
 
+export class Impurete
+{
+//VARIABLES
     private grosElements: boolean;
     private poussieresInflammables: boolean;
     private presenceElementsLegers: boolean;
     private presenceInsectes: boolean;
 
+//CONSTRUCTEUR
     constructor(grosElements:boolean, poussieresInflammables:boolean, presenceElementsLegers:boolean, presenceInsectes:boolean){
         this.grosElements = grosElements;
         this.poussieresInflammables = poussieresInflammables;
@@ -12,31 +16,39 @@ export class Impurete{
         this.presenceInsectes = presenceInsectes;
     }
 
-    getGrosElem(){
+//ACCESSEURS
+    getGrosElem() : boolean
+    {
         return this.grosElements;
     }
 
-    setGrosElem(elem: boolean){
+    setGrosElem(elem: boolean)
+    {
         this.grosElements = elem;
     }
 
-    getPoussInflam(){
+    getPoussInflam() : boolean
+    {
         return this.poussieresInflammables;
     }
 
-    setPoussInflam(poussInflam){
+    setPoussInflam(poussInflam)
+    {
         this.poussieresInflammables = poussInflam;
     }
 
-    getElemLegers(){
+    getElemLegers() : boolean
+    {
         return this.presenceElementsLegers;
     }
 
-    setElemLegers(elemLeger){
+    setElemLegers(elemLeger)
+    {
         this.presenceElementsLegers = elemLeger;
     }
 
-    getInsectes(){
+    getInsectes() : boolean
+    {
         return this.presenceInsectes;
     }
 

@@ -55,6 +55,10 @@ export class SARLBeuzelin{
 
 //ACCESSEURS
 
+  setBoisseaux(boisseaux: BoisseauChargement[]){
+    this.boisseauxChargement = boisseaux;
+  }
+
   /* Retourne le niveau de remplissage d une cellule */
   getRemplissage(index : number) : number
   {

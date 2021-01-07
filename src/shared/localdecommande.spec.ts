@@ -1,7 +1,7 @@
 import { SARLBeuzelin } from "./sarlbeuzelin";
 import { LocalDeCommande } from "./localdecommande";
 
-describe('local de commande', () => {
+describe('Local de commande', () => {
     let ldc : LocalDeCommande;
     let sarl : SARLBeuzelin;
 

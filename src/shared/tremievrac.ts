@@ -37,7 +37,7 @@ export class TremieVrac
   getCereale(){
     //Verifie si la tremie est vide
     if(this.isVide())
-      //Retourne une instance non parametrée de Cereale
+      //Retourne une instance non parametree de Cereale
       return new Cereale(Nom.Rien);
     else
       return this.cerealesATraiter;

@@ -53,7 +53,7 @@ export class Cellule
   getCereale(){
     //Verifie si la cellule est vide
     if(this.isVide())
-      //Retourne une instance non parametrée de Cereale
+      //Retourne une instance non parametree de Cereale
       return new Cereale(Nom.Rien);
     else
       return this.cereale;
@@ -129,7 +129,7 @@ export class Cellule
   }
 
 //FONCTIONS
-  /* Methode mettant a jour les temperatures des sondes par rapport a la temperature de la Cereale */
+  /* Methode mettant a jour les temperatures des sondes par rapport a la temperature de la variable cereale */
   majTemperature()
   {
     //Verifie si la cellule n est pas vide
@@ -141,7 +141,7 @@ export class Cellule
       }
   }
 
-  /* Methode ajoutant une instance de Cereale dans la cellule, met a jour les temperatures des sondes, la variable histo de la Cereale et la variable de Pourcentage de remplissage de la cellule  */
+  /* Methode ajoutant une instance de Cereale dans la cellule, met a jour les temperatures des sondes, la variable histo de cette instance de Cereale et la variable de Pourcentage de remplissage de la cellule  */
   ajoutCereale(cereale : Cereale)
   {
     this.setCereale(cereale);

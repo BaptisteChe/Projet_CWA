@@ -36,7 +36,7 @@ export class FosseReception
   {
     //Verifie si la fosse est vide
     if(this.isVide()){
-      //On affecte la variable passee en parametre a cereale
+      //On affecte la variable passee en parametre a la variable cereale
       this.cereale = cereale;
     }
   }

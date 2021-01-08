@@ -14,7 +14,7 @@ export class LocalDeCommande
   }
 
 //FONCTIONS
-  /* Methode retournant un delai d execussion en millisecondes */
+  /* Methode retournant un delai d execution en millisecondes */
   delay(ms: number) 
   {
    return new Promise( resolve => setTimeout(resolve, ms) );
@@ -26,7 +26,7 @@ export class LocalDeCommande
     //parcourir temperature
     //condition sur la temperature
       //si pas bon -> setventilation true
-      //si bon --> si active deviens false sinon rien
+      //si bon -> si active deviens false sinon rien
     //return un boolean de l etat de ventilation
     let temperature = this.manager.checkTempCellule();
     return temperature;

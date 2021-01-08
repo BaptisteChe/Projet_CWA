@@ -11,7 +11,7 @@ import { Alarme } from './alarme';
 
 /*
  * Singleton SARLBeuzelin est le manager de nos objets. C est lui qui permet la bonne communication 
- * entre chaque objet qu'il possede. Cette classe represente la SARL BEUZELIN et son fonctionnement.
+ * entre chaque objet qu il possede. Cette classe represente la SARL BEUZELIN et son fonctionnement.
 */ 
 
 export class SARLBeuzelin{
@@ -146,7 +146,7 @@ export class SARLBeuzelin{
 
 //FONCTIONS
 
-  /* Retourne un temps d'attente en Millisecondes */
+  /* Retourne un temps d attente en Millisecondes */
   delay(ms: number) 
   {
     return new Promise( resolve => setTimeout(resolve, ms) );

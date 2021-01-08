@@ -38,7 +38,7 @@ export class NettoyeurSeparateur
   {
     //Verifie si le nettoyeur est vide
     if(this.isVide())
-      //Retourne une instance non parametrée de Cereale
+      //Retourne une instance non parametree de Cereale mais avec un Nom.Rien
       return new Cereale(Nom.Rien);
     else
       return this.cerealesATraiter;
@@ -107,9 +107,9 @@ export class NettoyeurSeparateur
     if(!this.isVide()){
       //On affecte une nouvelle donnee a histo de cerealeATraiter
       this.cerealesATraiter.histo += "\nCéréale Traitée par le Nettoyeur - Separateur";
-      //Clonage de la cereale
+      //Clonage de la cerealeATraiter
       let c = this.cerealesATraiter;
-      //On ecrase la variable cereale 
+      //On ecrase la variable cerealeATraiter
       this.cerealesATraiter = null;
       //On renvoie le clone
       return c;

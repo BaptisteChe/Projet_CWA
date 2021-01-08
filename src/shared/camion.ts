@@ -66,7 +66,7 @@ export class Camion
         this.cereale.histo = "Arrivée de "+this.cereale.getNom().toString();
     }
 
-    /* Methode generant un entier aleatoire et affectant cet entier a la masse de la cereale et ajoutant une information l historique de celle-ci*/
+    /* Methode generant un entier aleatoire et affectant cet entier a la masse de la cereale et ajoutant une information a l historique de celle-ci*/
     pesee()
     {
         let alea;

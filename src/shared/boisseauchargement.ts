@@ -33,7 +33,7 @@ export class BoisseauChargement
       //Si oui retourne la variable cereale
       return this.cereale;
     else
-      //Si non retourne une instance de cereale nom parametree
+      //Si non retourne une instance de cereale non parametree mais avec un Nom.Rien
       return new Cereale(Nom.Rien);
   }
 
@@ -45,7 +45,7 @@ export class BoisseauChargement
 
 //FONCTIONS
 
-  //Methode de generation d un lieu d expedition affectee a une des variables de la cereale et renvoyant ce lieu
+  //Methode de generation d un lieu d expedition affecte a une des variables de la cereale et renvoie ce lieu
   genererLieuExpedition() : Expedition
   {
     let nbr = Math.round(Math.random());
@@ -68,7 +68,7 @@ export class BoisseauChargement
       //Ajout du lieu d expedition a l historique de la cereale en la generant en appelant la methode generationLieuExpedition
       this.cereale.histo += "\nCéréale chargée et au départ de : " + this.genererLieuExpedition();
       histo += this.cereale.histo+"\n---------------------------------------------------\n\n";
-      //Affectation de la nouvelle variable a lhistorique de la cereale
+      //Affectation de la nouvelle variable a l historique de la cereale
       this.cereale.histo = histo;
       //Clonage de la cereale
       let c : Cereale = this.cereale;
@@ -77,7 +77,7 @@ export class BoisseauChargement
       //On renvoie le clone
       return c;
     }else
-      //Sinon on renvoie une nouvelle instance de cereale non parametree
+      //Sinon on renvoie une nouvelle instance de cereale non parametree mais avec un Nom.Rien
       return new Cereale(Nom.Rien);
   }
 }
